@@ -9,7 +9,7 @@ export default function UploadProject() {
 
             <form >
                 <div className="space-y-12 mt-20">
-                    <div className="border-b border-gray-900/10 pb-12">
+                    <div className="border-b-2 border-gray-900/10 pb-12">
 
                         <h2 className="text-2xl font-semibold leading-7 text-gray-900">Create Project</h2>
                         {/* <p className="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p> */}
@@ -62,7 +62,7 @@ export default function UploadProject() {
                             {/* ----------------------------------------------------------------- */}
                             <div className="sm:col-span-3">
                                 <label
-                                    htmlFor="country"
+                                    htmlFor="category"
                                     className="block text-sm font-medium leading-6 text-gray-900"
                                 >
                                     Category
@@ -70,8 +70,8 @@ export default function UploadProject() {
                                 <div className="mt-2">
                                     <select
                                         id="Category"
-                                        name="country"
-                                        autoComplete="country-name"
+                                        name="category"
+                                        autoComplete="category-name"
                                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                                     >
                                         <option>Software</option>
@@ -80,10 +80,32 @@ export default function UploadProject() {
                                     </select>
                                 </div>
                             </div>
+                            {/* _________________Completion Status________________ */}
+
+                            <div className="sm:col-span-3">
+                                <label
+                                    htmlFor="completion"
+                                    className="block text-sm font-medium leading-6 text-gray-900"
+                                >
+                                    Completion Status
+                                </label>
+                                <div className="mt-2">
+                                    <select
+                                        id="completion"
+                                        name="completion"
+                                        autoComplete="completion-name"
+                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                                    >
+                                        <option>Completed</option>
+                                        <option>Under Research</option>
+                                        <option>Proposed</option>
+                                    </select>
+                                </div>
+                            </div>
 
 
 
-                            {/* Project brief Descript */}
+                            {/* ------------------------Project brief Description------------------------------------- */}
                             <div className="col-span-full">
                                 <label htmlFor="about" className="block text-sm font-medium leading-6 text-gray-900">
                                     Project Brief Description
@@ -98,14 +120,35 @@ export default function UploadProject() {
                                         placeholder=" Write Brief Description about your Project"
                                     />
                                 </div>
-                                <div className='border-b border-gray-900/10 pb-12' />
+                                <div className='border-b-2 border-gray-900/10 pb-12' />
                             </div>
                             {/* ------------------------------------------------------------------ */}
 
 
-                            {/* ---------------------Photos------------------------ */}
+                            {/* ---------------------Project Media------------------------ */}
                             <div className="col-span-full">
-                                <h2 className="pb-6 text-2xl font-semibold leading-7 text-gray-900">Project Details</h2>
+                                <h2 className="pb-6 text-2xl font-semibold leading-7 text-gray-900">Project Media</h2>
+
+                                {/* _______________________Project Link__________________________________ */}
+
+                                <div className="sm:col-span-4 pb-8">
+                                    <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
+                                        Project Link
+                                    </label>
+                                    <div className="mt-2">
+                                        <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                            <input
+                                                type="text"
+                                                name="link"
+                                                id="link"
+                                                autoComplete="link"
+                                                className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                                placeholder="If Deployed then Enter the Link of Project Deployement"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
 
                                 {/* -----------Video Link-------------------------- */}
 
@@ -115,14 +158,13 @@ export default function UploadProject() {
                                     </label>
                                     <div className="mt-2">
                                         <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                            {/* <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">Enter your Project Name</span> */}
                                             <input
                                                 type="text"
                                                 name="video"
                                                 id="video"
                                                 autoComplete="video"
                                                 className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                                placeholder="Enter the name of your Project"
+                                                placeholder="Upload your Video on Youtube and paste link here"
                                             />
                                         </div>
                                     </div>
@@ -155,7 +197,7 @@ export default function UploadProject() {
                     {/* ---------------------------------X--X---X-------------------------------------- */}
 
                     {/* ---------Personal Information------------------- */}
-                    <div className="border-b border-gray-900/10 pb-12">
+                    <div className="border-b-2 border-gray-900/10 pb-12">
                         <h2 className="text-2xl font-semibold leading-7 text-gray-900">Personal Information</h2>
                         {/* <p className="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p> */}
                         {/* ------Name */}
@@ -227,8 +269,10 @@ export default function UploadProject() {
                     </div>
                     {/* ----------Collaborator Notification---------------------------- */}
 
-                    <div className="border-b border-gray-900/10 pb-12">
-                        <h2 className="text-base font-semibold leading-7 text-gray-900">Collaborator Notifications</h2>
+
+
+                    <div className=" pb-12">
+                        <h2 className="text-base font-semibold leading-7 text-gray-900">Collaboration Notifications</h2>
                         <p className="mt-1 text-sm leading-6 text-gray-600">
                             We will Notify You when someone try to Collaborate with You
                         </p>
@@ -240,35 +284,57 @@ export default function UploadProject() {
                                     <div className="relative flex gap-x-3">
                                         <div className="flex h-6 items-center">
                                             <input
-                                                id="comments"
-                                                name="comments"
+                                                id="yes"
+                                                name="yes"
                                                 type="checkbox"
                                                 className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                                             />
                                         </div>
                                         <div className="text-sm leading-6">
-                                            <label htmlFor="comments" className="font-medium text-gray-900">
+                                            <label htmlFor="Yes" className="font-medium text-gray-900">
                                                 Yes
                                             </label>
                                         </div>
                                     </div>
-                                    <div className="relative flex gap-x-3">
+                                    {/* __________________________________________________________ */}
+                                    <div className="relative flex gap-x-3 border-b-2 border-black pb-12">
                                         <div className="flex h-6 items-center">
                                             <input
-                                                id="candidates"
-                                                name="candidates"
+                                                id="no"
+                                                name="no"
                                                 type="checkbox"
                                                 className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                                             />
                                         </div>
                                         <div className="text-sm leading-6">
-                                            <label htmlFor="candidates" className="font-medium text-gray-900">
+                                            <label htmlFor="no" className="font-medium text-gray-900">
                                                 No
                                             </label>
                                         </div>
                                     </div>
+                                    {/* _______________________________________________________________________ */}
+                                    <div className="pt-12 relative flex gap-x-3">
+                                        <div className="flex h-6 items-center">
+                                            <input
+                                                id="Agree"
+                                                name="Agree"
+                                                type="checkbox"
+                                                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                            />
+                                        </div>
+                                        <div className="text-sm leading-6">
+                                            <label htmlFor="Agree" className="font-medium text-gray-900">
+                                                Agree to Share your Project as Open Source
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
+
+
                             </fieldset>
+                            {/* _________________________________Agreement_________________________________________________________ */}
+
+
                         </div>
                     </div>
                 </div>
