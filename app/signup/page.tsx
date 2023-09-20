@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Signup() {
     return (
@@ -82,7 +83,12 @@ export default function Signup() {
                             </button>
                         </div>
                     </form>
-
+                      
+                    <div className=' flex justify-center'>
+                    <Link href='/signin'>
+                       <p className='text-blue-800 mt-6'>{`Already have a account? Sign In`}</p>
+                    </Link>
+                </div>
 
                 </div>
             </div>

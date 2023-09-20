@@ -8,6 +8,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 
+
 function classNames(...classes: any) {
     return classes.filter(Boolean).join(' ')
 }
@@ -21,7 +22,7 @@ export default function Navbar() {
                 {/* navbar */}
                 <nav className="flex justify-between bg-gray-900 text-white ">
                     <div className="px-5 xl:px-12 py-3 flex w-full items-center object-top">
-                        <Link className="text-3xl font-bold font-heading" href="#">
+                        <Link className="text-3xl font-bold font-heading" href="/">
                             <div className=' flex justify-center pt-0 mt-0 pb-0 mb-0'>
                                 <Image src="/NLogo.jpg" alt="ProCollab" className='bg-transparent' width={150} height={100} />
                             </div>
@@ -51,9 +52,15 @@ export default function Navbar() {
                         </ul>
                         {/* Header Icons */}
                         <div className="hidden xl:flex items-center space-x-5 items-center">
+                                
+                                <div className='bg-white rounded'>
+                                    <Link href='/signin'>  
+                                        <p  className='font-semibold text-black px-4 p-2 text-sm'>Sign In</p>
+                                    </Link>
+                                </div>
 
                             {/* Profile DropDown */}
-                            <Menu as="div" className="relative ml-3">
+                            {/* <Menu as="div" className="relative ml-3">
                                 <div>
                                     <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                                         <span className="absolute -inset-1.5" />
@@ -107,7 +114,7 @@ export default function Navbar() {
                                         </Menu.Item>
                                     </Menu.Items>
                                 </Transition>
-                            </Menu>
+                            </Menu> */}
 
 
                         </div>

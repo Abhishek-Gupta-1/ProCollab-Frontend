@@ -6,7 +6,6 @@ import Signin from '@/components/auth/Signin'
 import Signup from '@/components/auth/Signup'
 import ForgotPassword from '@/components/auth/ForgotPassword'
 import Navbar from '@/components/Dashboard/Navbar'
-import OldNav from '@/components/Dashboard/OldNav'
 import UploadProject from '@/components/UploadProject/UploadProject'
 import Dashboard from '@/components/Dashboard/Dashboard'
 
