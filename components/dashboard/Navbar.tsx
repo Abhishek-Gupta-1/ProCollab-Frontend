@@ -16,10 +16,10 @@ export default function Navbar() {
     return (
 
 
-        <div className="flex flex-wrap place-items-center  mt-0 pt-0">
-            <section className="relative mx-auto">
+        <div className="flex flex-wrap place-items-center  mt-0 pt-0 ">
+            <section className="relative mx-auto w-full">
                 {/* navbar */}
-                <nav className="flex justify-between bg-gray-900 text-white w-screen">
+                <nav className="flex justify-between bg-gray-900 text-white ">
                     <div className="px-5 xl:px-12 py-3 flex w-full items-center object-top">
                         <Link className="text-3xl font-bold font-heading" href="#">
                             <div className=' flex justify-center pt-0 mt-0 pb-0 mb-0'>
