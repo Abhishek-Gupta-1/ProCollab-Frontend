@@ -10,7 +10,7 @@ export default function UploadProject() {
 
             <form className='border p-7 w-full md:w-3/5 shadow'>
                 <div className="space-y-12 mt-20">
-                    <div className="border-b-2 border-gray-900/10 pb-12">
+                    <div className="border-b-2 border-black pb-12">
 
                         <h2 className="text-3xl font-semibold leading-7 text-gray-900">Create Project</h2>
                         {/* <p className="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p> */}
@@ -20,7 +20,7 @@ export default function UploadProject() {
                         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                             {/* Project Name */}
                             <div className="sm:col-span-4">
-                                <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
+                                <label htmlFor="username" className="block text-sm font-medium leading-6 text-black">
                                     Project Name
                                 </label>
                                 <div className="mt-2">
@@ -43,11 +43,11 @@ export default function UploadProject() {
                             {/* Project Short Descriptiton */}
 
                             <div className="sm:col-span-4">
-                                <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
+                                <label htmlFor="username" className="block text-sm font-medium leading-6 text-black">
                                     Project Title
                                 </label>
                                 <div className="mt-2">
-                                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-black focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                         {/* <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">Enter your Project Name</span> */}
                                         <input
                                             type="text"
@@ -163,14 +163,14 @@ export default function UploadProject() {
                                         placeholder=" Write Brief Description about your Project"
                                     />
                                 </div>
-                                <div className='border-b-2 border-gray-900/10 pb-12' />
+                                <div className='border-b-2 border-black pb-12' />
                             </div>
                             {/* ------------------------------------------------------------------ */}
 
 
                             {/* ---------------------Project Media------------------------ */}
                             <div className="col-span-full">
-                                <h2 className="pb-6 text-2xl font-semibold leading-7 text-gray-900">Project Media</h2>
+                                <h2 className="pb-6 text-2xl font-semibold leading-7 text-black">Media</h2>
 
                                 {/* _______________________Project Link__________________________________ */}
 
@@ -179,7 +179,7 @@ export default function UploadProject() {
                                         Project Link
                                     </label>
                                     <div className="mt-2">
-                                        <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                        <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-black focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                             <input
                                                 type="text"
                                                 name="link"
@@ -200,7 +200,7 @@ export default function UploadProject() {
                                         Video Link
                                     </label>
                                     <div className="mt-2">
-                                        <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                        <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-black focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                             <input
                                                 type="text"
                                                 name="video"
@@ -238,7 +238,7 @@ export default function UploadProject() {
                                 {/* <label htmlFor="cover-photo" className=" pt-12 block text-sm font-semibold leading-6 text-gray-900">
                                     Upload Photos of your Project
                                 </label>
-                                <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                                <div className="mt-2 flex justify-center rounded-lg border border-dashed border-black px-6 py-10">
                                     <div className="text-center">
                                         <PhotoIcon className="mx-auto h-12 w-12 text-gray-300" aria-hidden="true" />
                                         <div className="mt-4 flex text-sm leading-6 text-gray-600">
@@ -260,8 +260,8 @@ export default function UploadProject() {
                     {/* ---------------------------------X--X---X-------------------------------------- */}
 
                     {/* ---------Personal Information------------------- */}
-                    <div className="border-b-2 border-gray-900/10 pb-12">
-                        <h2 className="text-2xl font-semibold leading-7 text-gray-900">Personal Information</h2>
+                    <div className="border-b-2 border-black pb-12">
+                        <h2 className="text-2xl font-semibold leading-7 text-black">Personal Information</h2>
                         {/* <p className="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p> */}
                         {/* ------Name */}
                         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -275,7 +275,7 @@ export default function UploadProject() {
                                         name="fullname"
                                         id="first-name"
                                         autoComplete="given-name"
-                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-black placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     />
                                 </div>
                             </div>
@@ -291,11 +291,12 @@ export default function UploadProject() {
                                         name="email"
                                         type="email"
                                         autoComplete="email"
-                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-black placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     />
                                 </div>
                             </div>
-                            {/* ---------Country-------------------------- */}
+
+                            {/* ____________Institution Details________________ */}
                             <div className="sm:col-span-3">
                                 <label htmlFor="country" className="block text-sm font-semibold leading-6 text-gray-900">
                                     Country
@@ -404,7 +405,7 @@ export default function UploadProject() {
 
                         <div className="mt-10 space-y-10">
                             <fieldset>
-                                <legend className="text-sm font-semibold leading-6 text-gray-900">By Email</legend>
+                                <legend className="text-sm font-semibold leading-6 text-black">By Email</legend>
                                 <div className="mt-6 space-y-6">
                                     <div className="relative flex gap-x-3">
                                         <div className="flex h-6 items-center">
@@ -416,7 +417,7 @@ export default function UploadProject() {
                                             />
                                         </div>
                                         <div className="text-sm leading-6">
-                                            <label htmlFor="Yes" className="font-medium text-gray-900">
+                                            <label htmlFor="Yes" className="font-medium text-black">
                                                 Yes
                                             </label>
                                         </div>
@@ -432,7 +433,7 @@ export default function UploadProject() {
                                             />
                                         </div>
                                         <div className="text-sm leading-6">
-                                            <label htmlFor="no" className="font-medium text-gray-900">
+                                            <label htmlFor="no" className="font-medium text-black">
                                                 No
                                             </label>
                                         </div>
@@ -448,7 +449,7 @@ export default function UploadProject() {
                                             />
                                         </div>
                                         <div className="text-sm leading-6">
-                                            <label htmlFor="Agree" className="font-medium text-gray-900">
+                                            <label htmlFor="Agree" className="font-medium text-black">
                                                 Agree to Share your Project as Open Source
                                             </label>
                                         </div>
