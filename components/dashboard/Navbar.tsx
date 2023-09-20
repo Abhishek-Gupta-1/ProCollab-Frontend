@@ -45,22 +45,22 @@ export default function Navbar() {
                                 </Link>
                             </li>
                             <li>
-                                <Link className="hover:text-gray-200 cursor-pointer" href="/fsvn">
+                                <Link className="hover:text-gray-200 cursor-pointer" href="../UploadProject">
                                     Upload Project
                                 </Link>
                             </li>
                         </ul>
                         {/* Header Icons */}
                         <div className="hidden xl:flex items-center space-x-5 items-center">
-                                
-                                <div className='bg-white rounded'>
-                                    <Link href='/signin'>  
-                                        <p  className='font-semibold text-black px-4 p-2 text-sm'>Sign In</p>
-                                    </Link>
-                                </div>
+
+                            {/* <div className='bg-white rounded'>
+                                <Link href='/signin'>
+                                    <p className='font-semibold text-black px-4 p-2 text-sm'>Sign In</p>
+                                </Link>
+                            </div> */}
 
                             {/* Profile DropDown */}
-                            {/* <Menu as="div" className="relative ml-3">
+                            <Menu as="div" className="relative ml-3">
                                 <div>
                                     <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                                         <span className="absolute -inset-1.5" />
@@ -84,62 +84,48 @@ export default function Navbar() {
                                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                         <Menu.Item>
                                             {({ active }) => (
-                                                <a
+                                                <Link
                                                     href="#"
                                                     className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                                 >
                                                     Your Profile
-                                                </a>
+                                                </Link>
+                                            )}
+                                        </Menu.Item>
+                                        <Menu.Item>
+                                            {({ active }) => (
+                                                <Link
+                                                    href="/signin"
+                                                    className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                >
+                                                    Sign In
+                                                </Link>
                                             )}
                                         </Menu.Item>
                                         <Menu.Item>
                                             {({ active }) => (
                                                 <a
-                                                    href="#"
+                                                    href="/signup"
                                                     className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                                 >
-                                                    Settings
-                                                </a>
-                                            )}
-                                        </Menu.Item>
-                                        <Menu.Item>
-                                            {({ active }) => (
-                                                <a
-                                                    href="#"
-                                                    className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                                >
-                                                    Sign out
+                                                    Sign Up
                                                 </a>
                                             )}
                                         </Menu.Item>
                                     </Menu.Items>
                                 </Transition>
-                            </Menu> */}
+                            </Menu>
 
 
                         </div>
                     </div>
                     {/* Responsive navbar */}
-                    <a className="xl:hidden flex mr-6 items-center" href="#">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-6 w-6 hover:text-gray-200"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                            />
-                        </svg>
-                        <span className="flex absolute -mt-5 ml-4">
-                            <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75" />
-                            <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
-                        </span>
-                    </a>
+
+                    <span className="flex absolute -mt-5 ml-4">
+                        <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
+                    </span>
+
                     <a className="navbar-burger self-center mr-12 xl:hidden" href="#">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"

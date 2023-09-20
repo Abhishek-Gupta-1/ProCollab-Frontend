@@ -12,7 +12,7 @@ export default function Example() {
     return (
         <>
             {/* <Navbar /> */}
-            <div className="bg-white">
+            <div className="bg-black">
 
                 <div className="relative isolate pl-2 pt-0 mt-0 lg:px-8">
                     <div
@@ -24,10 +24,10 @@ export default function Example() {
                     <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
 
                         <div className="text-left">
-                            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+                            <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-[#8e5cf1]  to-[#dc0f94] inline-block text-transparent bg-clip-text sm:text-6xl">
                                 Inspire Collaborate Innovate
                             </h1>
-                            <p className="mt-6 text-lg leading-8 text-gray-600">
+                            <p className="mt-6 text-lg leading-8 bg-gradient-to-r from-[#8e5cf1]  to-[#dc0f94] inline-block text-transparent bg-clip-text">
                                 Inspiring Minds
                             </p>
                             <div className="mt-10 flex justify-left gap-x-6">
