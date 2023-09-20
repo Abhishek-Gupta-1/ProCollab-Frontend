@@ -30,13 +30,8 @@ export default function Navbar() {
                         {/* Nav Links */}
                         <ul className="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
                             <li>
-                                <Link className="hover:text-gray-200" href="#">
+                                <Link className="hover:text-gray-200" href="/">
                                     Home
-                                </Link>
-                            </li>
-                            <li>
-                                <Link className="hover:text-gray-200" href="#">
-                                    Collaborate
                                 </Link>
                             </li>
                             <li>
@@ -45,7 +40,7 @@ export default function Navbar() {
                                 </Link>
                             </li>
                             <li>
-                                <Link className="hover:text-gray-200 cursor-pointer" href="../UploadProject">
+                                <Link className="hover:text-gray-200 cursor-pointer" href="/uploadproject">
                                     Upload Project
                                 </Link>
                             </li>
