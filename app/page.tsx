@@ -2,12 +2,12 @@ import { frontend } from "@/api/apis"
 import { Component, useState } from 'react'
 
 
-import Signin from '@/components/auth/Signin'
-import Signup from '@/components/auth/Signup'
+import Signin from '@/app/signin/page'
+import Signup from '@/app/signup/page'
 import ForgotPassword from '@/components/auth/ForgotPassword'
 import Navbar from '@/components/Dashboard/Navbar'
 import UploadProject from '@/components/UploadProject/UploadProject'
-import Dashboard from '@/components/Dashboard/Dashboard'
+import Dashboard from '@/components/dashboard/dashboard'
 
 
 
@@ -19,11 +19,6 @@ export default async function Home() {
 
   return (
     <main>
-      {/* <Signin /> */}
-      {/* <Signup /> */}
-      {/* <ForgotPassword /> */}
-      {/* <Navbar /> */}
-      {/* <OldNav /> */}
 
       {/* <div className="flex justify-center ">
 
