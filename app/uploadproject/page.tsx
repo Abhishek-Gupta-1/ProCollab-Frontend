@@ -4,10 +4,10 @@ import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 
 export default function Example() {
     return (
-          <div className='flex justify-center'>
+          <div className='flex justify-center '>
 
          
-        <form>
+        <form >
             <div className="space-y-12 mt-20">
                 <div className="border-b border-gray-900/10 pb-12">
 

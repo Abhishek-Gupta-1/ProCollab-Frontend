@@ -1,6 +1,34 @@
+"use client"
 import Image from 'next/image'
 import Link from 'next/link'
+import React from 'react'
+
+
+const defaultValue = {
+    email : '',
+    password : '',
+} 
+
+
 export default function Signin() {
+
+    const [user, setUser] = React.useState(defaultValue)
+     
+
+    const InputfromText =(e : React.ChangeEvent<HTMLInputElement>) =>{
+        setUser({...user,[e.target.name]:e.target.value});
+        //   console.log(user);
+    }
+
+    const SendDetails = async() => {
+        // const res = await SignInRequest(user);
+        console.log(user)
+        // setUserid(res?.data.message._id);
+       //    await StoreCookies();
+    }
+
+
+
     return (
         <>
             {/*
@@ -33,9 +61,10 @@ export default function Signin() {
                                     id="email"
                                     name="email"
                                     type="email"
+                                    onChange={(e)=>InputfromText(e)}
                                     autoComplete="email"
                                     required
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    className="block w-full p-5 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
                             </div>
                         </div>
@@ -51,10 +80,11 @@ export default function Signin() {
                                 <input
                                     id="password"
                                     name="password"
+                                    onChange={(e)=>InputfromText(e)}
                                     type="password"
                                     autoComplete="current-password"
                                     required
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    className="block w-full p-5 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
                             </div>
                             <div className="text-sm">
@@ -66,7 +96,7 @@ export default function Signin() {
 
                         <div>
                             <button
-                                type="submit"
+                                type="submit"  onClick={()=>SendDetails()}
                                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >
                                 Sign in
