@@ -1,12 +1,18 @@
 "use client";
 
 import Image from 'next/image';
+import Link from 'next/link';
+
+import { Fragment } from 'react'
+import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+
 
 function classNames(...classes: any) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+export default function Navbar() {
     return (
 
 
@@ -14,55 +20,96 @@ export default function Example() {
             <section className="relative mx-auto">
                 {/* navbar */}
                 <nav className="flex justify-between bg-gray-900 text-white w-screen">
-                    <div className="px-5 xl:px-12 py-3 flex w-full items-center">
-                        <a className="text-3xl font-bold font-heading" href="#">
+                    <div className="px-5 xl:px-12 py-3 flex w-full items-center object-top">
+                        <Link className="text-3xl font-bold font-heading" href="#">
                             <div className=' flex justify-center pt-0 mt-0 pb-0 mb-0'>
                                 <Image src="/NLogo.jpg" alt="ProCollab" className='bg-transparent' width={150} height={100} />
                             </div>
-                        </a>
+                        </Link>
                         {/* Nav Links */}
                         <ul className="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
                             <li>
-                                <a className="hover:text-gray-200" href="#">
+                                <Link className="hover:text-gray-200" href="#">
                                     Home
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a className="hover:text-gray-200" href="#">
+                                <Link className="hover:text-gray-200" href="#">
                                     Collaborate
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a className="hover:text-gray-200" href="#">
+                                <Link className="hover:text-gray-200" href="#">
                                     Search Project
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a className="hover:text-gray-200" href="#">
+                                <Link className="hover:text-gray-200 cursor-pointer" href="/fsvn">
                                     Upload Project
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                         {/* Header Icons */}
                         <div className="hidden xl:flex items-center space-x-5 items-center">
 
-                            {/* Sign In / Register      */}
-                            <a className="flex items-center hover:text-gray-200" href="#">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-6 w-6 hover:text-gray-200"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
+                            {/* Profile DropDown */}
+                            <Menu as="div" className="relative ml-3">
+                                <div>
+                                    <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                                        <span className="absolute -inset-1.5" />
+                                        <span className="sr-only">Open user menu</span>
+                                        <Image
+                                            className="h-8 w-8 rounded-full" width={32} height={32}
+                                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                            alt=""
+                                        />
+                                    </Menu.Button>
+                                </div>
+                                <Transition
+                                    as={Fragment}
+                                    enter="transition ease-out duration-100"
+                                    enterFrom="transform opacity-0 scale-95"
+                                    enterTo="transform opacity-100 scale-100"
+                                    leave="transition ease-in duration-75"
+                                    leaveFrom="transform opacity-100 scale-100"
+                                    leaveTo="transform opacity-0 scale-95"
                                 >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                                    />
-                                </svg>
-                            </a>
+                                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                        <Menu.Item>
+                                            {({ active }) => (
+                                                <a
+                                                    href="#"
+                                                    className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                >
+                                                    Your Profile
+                                                </a>
+                                            )}
+                                        </Menu.Item>
+                                        <Menu.Item>
+                                            {({ active }) => (
+                                                <a
+                                                    href="#"
+                                                    className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                >
+                                                    Settings
+                                                </a>
+                                            )}
+                                        </Menu.Item>
+                                        <Menu.Item>
+                                            {({ active }) => (
+                                                <a
+                                                    href="#"
+                                                    className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                >
+                                                    Sign out
+                                                </a>
+                                            )}
+                                        </Menu.Item>
+                                    </Menu.Items>
+                                </Transition>
+                            </Menu>
+
+
                         </div>
                     </div>
                     {/* Responsive navbar */}
