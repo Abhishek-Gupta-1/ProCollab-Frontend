@@ -25,8 +25,8 @@ export default async function Home() {
         <UploadProject />
       </div> */}
 
-      <div className="flex justify-center items-center">
-        <Dashboard />
+          <div className="flex  justify-center items-center">
+           <Dashboard />
       </div>
 
 
