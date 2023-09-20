@@ -6,7 +6,7 @@ import Signin from '@/app/signin/page'
 import Signup from '@/app/signup/page'
 import ForgotPassword from '@/components/auth/ForgotPassword'
 import Navbar from '@/components/Dashboard/Navbar'
-import UploadProject from '@/components/UploadProject/UploadProject'
+import UploadProject from '@/app/uploadproject/page'
 import Dashboard from '@/components/dashboard/dashboard'
 
 
@@ -20,7 +20,15 @@ export default async function Home() {
   return (
     <main>
 
-      <Dashboard />
+      {/* <div className="flex justify-center ">
+
+        <UploadProject />
+      </div> */}
+
+      <div className="flex justify-center items-center">
+        <Dashboard />
+      </div>
+
 
 
       <p>{res?.data.message}</p>

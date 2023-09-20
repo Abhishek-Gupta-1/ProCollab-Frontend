@@ -2,7 +2,7 @@
 
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 
-export default function Example() {
+export default function UploadProject() {
     return (
         <div className='flex justify-center'>
 
@@ -11,7 +11,7 @@ export default function Example() {
                 <div className="space-y-12 mt-20">
                     <div className="border-b border-gray-900/10 pb-12">
 
-                        <h2 className="text-2xl font-semibold leading-7 text-gray-900">Project Information</h2>
+                        <h2 className="text-2xl font-semibold leading-7 text-gray-900">Create Project</h2>
                         {/* <p className="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p> */}
 
 
@@ -60,6 +60,27 @@ export default function Example() {
                             </div>
 
                             {/* ----------------------------------------------------------------- */}
+                            <div className="sm:col-span-3">
+                                <label
+                                    htmlFor="country"
+                                    className="block text-sm font-medium leading-6 text-gray-900"
+                                >
+                                    Category
+                                </label>
+                                <div className="mt-2">
+                                    <select
+                                        id="Category"
+                                        name="country"
+                                        autoComplete="country-name"
+                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                                    >
+                                        <option>Software</option>
+                                        <option>Hardware</option>
+                                        <option>Hybrid</option>
+                                    </select>
+                                </div>
+                            </div>
+
 
 
                             {/* Project brief Descript */}
@@ -77,29 +98,39 @@ export default function Example() {
                                         placeholder=" Write Brief Description about your Project"
                                     />
                                 </div>
+                                <div className='border-b border-gray-900/10 pb-12' />
                             </div>
-                            {/* ------------------------------------------------------------------- */}
-
-                            {/* Project Thumbnail */}
-                            <div className="col-span-full">
-                                <label htmlFor="photo" className="block text-sm font-medium leading-6 text-gray-900">
-                                    Project Thumbnail
-                                </label>
-                                <div className="mt-2 flex items-center gap-x-3">
-                                    <UserCircleIcon className="h-12 w-12 text-gray-300" aria-hidden="true" />
-                                    <button
-                                        type="button"
-                                        className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                                    >
-                                        Change
-                                    </button>
-                                </div>
-                            </div>
+                            {/* ------------------------------------------------------------------ */}
 
 
                             {/* ---------------------Photos------------------------ */}
                             <div className="col-span-full">
-                                <label htmlFor="cover-photo" className="block text-sm font-medium leading-6 text-gray-900">
+                                <h2 className="pb-6 text-2xl font-semibold leading-7 text-gray-900">Project Details</h2>
+
+                                {/* -----------Video Link-------------------------- */}
+
+                                <div className="sm:col-span-4">
+                                <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
+                                    Video Link
+                                </label>
+                                <div className="mt-2">
+                                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                        {/* <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">Enter your Project Name</span> */}
+                                        <input
+                                            type="text"
+                                            name="video"
+                                            id="video"
+                                            autoComplete="video"
+                                            className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                            placeholder="Enter the name of your Project"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                                {/* --------------Image upload------------------ */}
+
+                                <label htmlFor="cover-photo" className=" pt-12 block text-sm font-medium leading-6 text-gray-900">
                                     Upload Photos of your Project
                                 </label>
                                 <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
