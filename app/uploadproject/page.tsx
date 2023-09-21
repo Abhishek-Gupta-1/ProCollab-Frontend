@@ -1,9 +1,53 @@
 
-
-import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
+"use client"
+import { useState } from 'react';
 import { Countries } from '../../constents'
 
+type PorjectDetails = {
+    title: string;
+    shortdiscription: string;
+    category: string;
+    theme: string;
+    description: string;
+    teckstack: string;
+    projectlink: string;
+    status: string;
+    photo?: string[];
+    universityname: string;
+    qualification: string;
+    collaborator?: string[];
+  };
+  
+  const initialProjectDetails: PorjectDetails = {
+    title: "",
+    shortdiscription: "",
+    category: "Software",
+    theme: "",
+    description: "",
+    teckstack: "",
+    projectlink: "",
+    status: "Completed",
+    universityname: "",
+    qualification: "",
+  };
+
 export default function UploadProject() {
+
+    const [project, setProject] = useState(initialProjectDetails);
+
+    const InputfromText =(e : React.ChangeEvent<HTMLInputElement>) =>{
+        setProject({...project,[e.target.name]:e.target.value});
+        //   console.log(project);
+    }
+
+    const SendDetails = async(e:React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault();
+        // const res = await SignInRequest(user);
+        console.log(project)
+        // setUserid(res?.data.message._id);
+       //    await StoreCookies();
+    }
+
     return (
         <div className='flex justify-center'>
 
@@ -21,16 +65,17 @@ export default function UploadProject() {
                             {/* Project Name */}
                             <div className="sm:col-span-4">
                                 <label htmlFor="username" className="block text-sm font-medium leading-6 text-black">
-                                    Project Name
+                                    Project Name <span className='text-amber-500'>*</span>
                                 </label>
                                 <div className="mt-2">
                                     <div className="flex focus:outline-none focus:border-none rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                         {/* <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">Enter your Project Name</span> */}
                                         <input
                                             type="text"
-                                            name="username"
-                                            id="username"
+                                            name="title"
+                                            id="title"
                                             autoComplete="username"
+                                            onChange={(e)=>InputfromText(e)}
                                             // className="block flex-1 border-0 bg-transparent p-8 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                             className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-sm sm:leading-6'
                                             placeholder="Your Project Name "
@@ -44,16 +89,17 @@ export default function UploadProject() {
 
                             <div className="sm:col-span-4">
                                 <label htmlFor="username" className="block text-sm font-medium leading-6 text-black">
-                                    Project Title
+                                    Project Title <span className='text-amber-500'>*</span>
                                 </label>
                                 <div className="mt-2">
                                     <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-black focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                         {/* <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">Enter your Project Name</span> */}
                                         <input
                                             type="text"
-                                            name="username"
-                                            id="username"
-                                            autoComplete="username"
+                                            name="shortdiscription"
+                                            id="shortdiscription"
+                                            onChange={(e)=>InputfromText(e)}
+                                            autoComplete="shortdiscription"
                                             className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-sm sm:leading-6'
                                             placeholder="Short description"
                                         />
@@ -61,10 +107,10 @@ export default function UploadProject() {
                                 </div>
                             </div>
 
-                            {/* texh stack  */}
+                            {/* teck stack  */}
                             <div className="sm:col-span-4">
                                 <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
-                                   Technology Used
+                                   Technology Used <span className='text-amber-500'>*</span>
                                 </label>
                                 <div className="mt-2">
                                     <div className="flex focus:outline-none focus:border-none rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
@@ -73,6 +119,7 @@ export default function UploadProject() {
                                             type="text"
                                             name="teckstack"
                                             id="teckstack"
+                                            onChange={(e)=>InputfromText(e)}
                                             autoComplete="teckstack"
                                             className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-sm sm:leading-6'
                                             placeholder="Reactjs,Nextjs etc.."
@@ -85,7 +132,7 @@ export default function UploadProject() {
 
                             <div className="sm:col-span-4">
                                 <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
-                                   Theme
+                                   Theme <span className='text-amber-500'>*</span>
                                 </label>
                                 <div className="mt-2">
                                     <div className="flex focus:outline-none focus:border-none rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
@@ -94,6 +141,7 @@ export default function UploadProject() {
                                             type="text"
                                             name="theme"
                                             id="theme"
+                                            onChange={(e)=>InputfromText(e)}
                                             autoComplete="theme"
                                             className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-sm sm:leading-6'
                                             placeholder="Web,Blockchain,AI/Ml atc.."
@@ -108,12 +156,13 @@ export default function UploadProject() {
                                     htmlFor="category"
                                     className="block text-sm font-semibold leading-6 text-gray-900"
                                 >
-                                    Category
+                                    Category <span className='text-amber-500'>*</span>
                                 </label>
                                 <div className="mt-2">
                                     <select
                                         id="Category"
                                         name="category"
+                                        onChange={(e)=>InputfromText(e)}
                                         autoComplete="category-name"
                                         className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                                     >
@@ -130,12 +179,13 @@ export default function UploadProject() {
                                     htmlFor="completion"
                                     className="block text-sm font-semibold leading-6 text-gray-900"
                                 >
-                                    Completion Status
+                                    Completion Status <span className='text-amber-500'>*</span>
                                 </label>
                                 <div className="mt-2">
                                     <select
-                                        id="completion"
-                                        name="completion"
+                                        id="status"
+                                        name="status"
+                                        onChange={(e)=>InputfromText(e)}
                                         autoComplete="completion-name"
                                         className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                                     >
@@ -151,12 +201,13 @@ export default function UploadProject() {
                             {/* ------------------------Project brief Description------------------------------------- */}
                             <div className="col-span-full">
                                 <label htmlFor="about" className="block text-sm font-semibold leading-6 text-gray-900">
-                                    Detailed Description
+                                    Detailed Description <span className='text-amber-500'>*</span>
                                 </label>
                                 <div className="mt-2">
                                     <textarea
-                                        id="about"
-                                        name="about"
+                                        id="description"
+                                        name="description"
+                                        onChange={(e)=>InputfromText(e)}
                                         rows={3}
                                         className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         defaultValue={''}
@@ -176,14 +227,15 @@ export default function UploadProject() {
 
                                 <div className="sm:col-span-4 pb-8">
                                     <label htmlFor="username" className="block text-sm font-semibold leading-6 text-gray-900">
-                                        Project Link
+                                        Project Link <span className='text-amber-500'>*</span>
                                     </label>
                                     <div className="mt-2">
                                         <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-black focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                             <input
                                                 type="text"
-                                                name="link"
-                                                id="link"
+                                                name="projectlink"
+                                                id="projectlink"
+                                                onChange={(e)=>InputfromText(e)}
                                                 autoComplete="link"
                                                 className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-xs sm:leading-6'
                                                 placeholder="Deployed Link/Source Link"
@@ -205,6 +257,7 @@ export default function UploadProject() {
                                                 type="text"
                                                 name="video"
                                                 id="video"
+                                                onChange={(e)=>InputfromText(e)}
                                                 autoComplete="video"
                                                 className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-sm sm:leading-6'
                                                 placeholder="Uploaded Video Link"
@@ -225,6 +278,7 @@ export default function UploadProject() {
                                                 type="text"
                                                 name="photo"
                                                 id="photo"
+                                                onChange={(e)=>InputfromText(e)}
                                                 autoComplete="photo"
                                                 className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-sm sm:leading-6'
                                                 placeholder="Uploaded photo Link"
@@ -267,12 +321,13 @@ export default function UploadProject() {
                         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                             <div className="sm:col-span-3">
                                 <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
-                                    Full name
+                                    Full name 
                                 </label>
                                 <div className="mt-2">
                                     <input
                                         type="text"
                                         name="fullname"
+                                        onChange={(e)=>InputfromText(e)}
                                         id="first-name"
                                         autoComplete="given-name"
                                         className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-black placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -290,6 +345,7 @@ export default function UploadProject() {
                                         id="email"
                                         name="email"
                                         type="email"
+                                        onChange={(e)=>InputfromText(e)}
                                         autoComplete="email"
                                         className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-black placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     />
@@ -305,6 +361,7 @@ export default function UploadProject() {
                                     <select
                                         id="country"
                                         name="country"
+                                        onChange={(e)=>InputfromText(e)}
                                         autoComplete="country-name"
                                         className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                                     >
@@ -332,13 +389,14 @@ export default function UploadProject() {
 
                                 <div className="sm:col-span-4 pb-8">
                                     <label htmlFor="username" className="block text-sm font-semibold leading-6 text-gray-900">
-                                    University Name
+                                    University Name <span className='text-amber-500'>*</span>
                                     </label>
                                     <div className="mt-2">
                                         <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                             <input
                                                 type="text"
                                                 name="universityname"
+                                                onChange={(e)=>InputfromText(e)}
                                                 id="universityname"
                                                 autoComplete="universityname"
                                                 className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-xs sm:leading-6'
@@ -353,7 +411,7 @@ export default function UploadProject() {
 
                                 <div className="sm:col-span-4">
                                     <label htmlFor="username" className="block text-sm font-semibold leading-6 text-gray-900">
-                                     Qualification
+                                     Qualification <span className='text-amber-500'>*</span>
                                     </label>
                                     <div className="mt-2">
                                         <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
@@ -361,6 +419,7 @@ export default function UploadProject() {
                                                 type="text"
                                                 name="qualification"
                                                 id="qualification"
+                                                onChange={(e)=>InputfromText(e)}
                                                 autoComplete="qualification"
                                                 className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-sm sm:leading-6'
                                                 placeholder="Your Qualification"
@@ -373,7 +432,7 @@ export default function UploadProject() {
                                 {/* collaborators  */}
                                 <div className="sm:col-span-4 mt-6">
                                     <label htmlFor="username" className="block text-sm font-semibold leading-6 text-gray-900">
-                                    Collaborators
+                                    Collaborators 
                                     </label>
                                     <div className="mt-2">
                                         <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
@@ -381,6 +440,7 @@ export default function UploadProject() {
                                                 type="text"
                                                 name="collaborator"
                                                 id="collaborator"
+                                                onChange={(e)=>InputfromText(e)}
                                                 autoComplete="collaborator"
                                                 className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-sm sm:leading-6'
                                                 placeholder="Who has helped or the part part of your project"
@@ -467,7 +527,7 @@ export default function UploadProject() {
 
                 <div className="mt-6 flex justify-center items-center  gap-x-6 mb-5">
                     <button
-                        type="submit"
+                        type="submit"   onClick={(e)=>SendDetails(e)}
                         className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
                         Publish My Project / Research
