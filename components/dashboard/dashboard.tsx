@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
-import Navbar from '@/components/Dashboard/Navbar'
+import Navbar from '@/components/dashboard/Navbar'
 import TypewriterComponent from 'typewriter-effect';
 
 export default function Example() {
