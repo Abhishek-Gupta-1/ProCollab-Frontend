@@ -4,6 +4,7 @@ import axios from 'axios'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import Cookies from 'js-cookie';
 
 
 const defaultValue = {
@@ -15,7 +16,7 @@ const defaultValue = {
 export default function Signin() {
 
     const [user, setUser] = React.useState(defaultValue);
-    const [userId, setUserid] = React.useState('')
+    // const [userId, setUserid] = React.useState('')
      
 
     const InputfromText =(e : React.ChangeEvent<HTMLInputElement>) =>{
@@ -29,25 +30,15 @@ export default function Signin() {
             
             // console.log(res?.data.message._id);
         
-            setUserid(res?.data.message._id);
+            // setUserid(res?.data.message._id);
         
-            console.log(userId);
-            
-            await StoreCookies();
+            // console.log(userId);
+            Cookies.set('userid',res?.data.message._id);
+
           } catch (error) {
             console.error("Error while fetching data:", error);
           }
     }
-
-    const StoreCookies = async() =>{
-        try{
-          await axios.post('/api/cookies',{
-            userid:userId
-          })
-        }catch(err:any){
-          console.log("Error In Sending The Cookies",err);
-        }
-      }
 
 
     return (
