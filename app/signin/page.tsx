@@ -1,10 +1,12 @@
 "use client"
-import { SignInRequest } from '@/api/apis'
 import axios from 'axios'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import Cookies from 'js-cookie';
+import { toast } from 'react-hot-toast'
+
+import { SignInRequest } from '@/api/apis'
 
 
 const defaultValue = {
@@ -34,6 +36,7 @@ export default function Signin() {
         
             // console.log(userId);
             Cookies.set('userid',res?.data.message._id);
+            toast.success("Successfully logged In");
 
           } catch (error) {
             console.error("Error while fetching data:", error);

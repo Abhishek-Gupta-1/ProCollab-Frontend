@@ -23,10 +23,11 @@ type PorjectDetails = {
     teckstack: string;
     projectlink: string;
     status: string;
-    photo?: string[];
+    photo?: string;
     universityname: string;
     qualification: string;
-    collaborator?: string[];
+    collaborator?: string;
+    userid:string;
   };
 
 export const SignUpRequest = async(user:User) =>{

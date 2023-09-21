@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import  Cookies  from 'js-cookie'
 
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
@@ -14,6 +15,9 @@ function classNames(...classes: any) {
 }
 
 export default function Navbar() {
+
+    const userId = Cookies.get('userid');
+
     return (
 
 
@@ -29,33 +33,40 @@ export default function Navbar() {
                         </Link>
                         {/* Nav Links */}
                         <ul className="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-                            <li>
+                            {/* <li>
                                 <Link className="hover:text-gray-200" href="/">
                                     Home
                                 </Link>
-                            </li>
-                            <li>
-                                <Link className="hover:text-gray-200" href="#">
-                                    Search Project
-                                </Link>
-                            </li>
-                            <li>
-                                <Link className="hover:text-gray-200 cursor-pointer" href="/uploadproject">
-                                    Upload Project
-                                </Link>
-                            </li>
+                            </li> */}
+                            {
+                                   userId && (
+                                    <div className='flex gap-3'>
+                                        <li>
+                                            <Link className="hover:text-gray-200" href="#">
+                                                Search Project
+                                            </Link>
+                                       </li>
+                                      <li>
+                                        <Link className="hover:text-gray-200 cursor-pointer" href="/uploadproject">
+                                            Upload Project
+                                        </Link>
+                                    </li>
+                                    </div>
+                                   ) 
+                            }
+                           
                         </ul>
                         {/* Header Icons */}
                         <div className="hidden xl:flex items-center space-x-5 items-center">
 
-                            {/* <div className='bg-white rounded'>
+                            <div className='bg-white rounded'>
                                 <Link href='/signin'>
                                     <p className='font-semibold text-black px-4 p-2 text-sm'>Sign In</p>
                                 </Link>
-                            </div> */}
+                            </div>
 
                             {/* Profile DropDown */}
-                            <Menu as="div" className="relative ml-3">
+                            {/* <Menu as="div" className="relative ml-3">
                                 <div>
                                     <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                                         <span className="absolute -inset-1.5" />
@@ -109,7 +120,7 @@ export default function Navbar() {
                                         </Menu.Item>
                                     </Menu.Items>
                                 </Transition>
-                            </Menu>
+                            </Menu> */}
 
 
                         </div>

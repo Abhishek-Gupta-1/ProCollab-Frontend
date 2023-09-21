@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { Countries } from '../../constents'
 import { uploadProjects } from '@/api/apis';
+import Cookies from 'js-cookie';
+import toast from 'react-hot-toast';
 
 type PorjectDetails = {
     title: string;
@@ -13,10 +15,11 @@ type PorjectDetails = {
     teckstack: string;
     projectlink: string;
     status: string;
-    photo?: string[];
+    photo?: string;
     universityname: string;
     qualification: string;
-    collaborator?: string[];
+    collaborator?: string;
+    userid:string;
   };
   
   const initialProjectDetails: PorjectDetails = {
@@ -30,6 +33,7 @@ type PorjectDetails = {
     status: "Completed",
     universityname: "",
     qualification: "",
+    userid:""
   };
 
 export default function UploadProject() {
@@ -44,10 +48,35 @@ export default function UploadProject() {
 
     const SendDetails = async(e:React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
+
+
+        // const inputString = JSON.stringify(project.teckstack);
+        // console.log(inputString)
+        // const array = inputString.split(',');
+        // console.log(array)
+        // array.map((item)=>
+        //   project.teckstack.push(item)
+        // );
+     try{
+      
+        const userId = Cookies.get('userid');
+        if(userId){
+            project.userid = userId
+        }
+        console.log(project)
+        console.log(project.teckstack)
+
         const res = await uploadProjects(project);
-        console.log(res)
+        console.log(res);
+        toast.success("Project Uploaded");
+
+     }catch(err:any){
+             console.log("Error in uploading Project")
+     }
+       
+
         // setProjectId(res?.data.message._id);
-        //await StoreCookies();
+        // const inputArray = inputValue.split(',').map((item) => item.trim());
     }
 
     return (
@@ -124,7 +153,7 @@ export default function UploadProject() {
                                             onChange={(e)=>InputfromText(e)}
                                             autoComplete="teckstack"
                                             className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-sm sm:leading-6'
-                                            placeholder="Reactjs,Nextjs etc.."
+                                            placeholder="Reactjs,Nextjs,nodejs etc.."
                                         />
                                     </div>
                                 </div>

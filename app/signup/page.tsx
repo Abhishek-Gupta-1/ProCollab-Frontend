@@ -4,6 +4,7 @@ import { SignUpRequest } from '@/api/apis';
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const defaultValue = {
     fullname:'',
@@ -21,7 +22,12 @@ export default function Signup() {
     }
 
     const SendDetails = async() => {
-        const res = await SignUpRequest(user);
+        try{
+            const res = await SignUpRequest(user);
+            toast.success("Successfully Sinned Up");
+        }catch(err:any){
+            console.log("Error in sign up",err);
+        }
         // setUserid(res?.data.message._id);
         // console.log(userId)
        //    await StoreCookies();
