@@ -5,7 +5,7 @@ import { Component, useState } from 'react'
 import Signin from '@/app/signin/page'
 import Signup from '@/app/signup/page'
 import ForgotPassword from '@/components/auth/ForgotPassword'
-import Navbar from '@/components/Dashboard/Navbar'
+import Navbar from '@/components/dashboard/Navbar'
 import UploadProject from '@/app/uploadproject/page'
 import Dashboard from '@/components/dashboard/dashboard'
 
