@@ -2,6 +2,7 @@
 "use client"
 import { useState } from 'react';
 import { Countries } from '../../constents'
+import { uploadProjects } from '@/api/apis';
 
 type PorjectDetails = {
     title: string;
@@ -34,6 +35,7 @@ type PorjectDetails = {
 export default function UploadProject() {
 
     const [project, setProject] = useState(initialProjectDetails);
+    const [projectId, setProjectId] = useState('');
 
     const InputfromText =(e : React.ChangeEvent<HTMLInputElement>) =>{
         setProject({...project,[e.target.name]:e.target.value});
@@ -42,10 +44,10 @@ export default function UploadProject() {
 
     const SendDetails = async(e:React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
-        // const res = await SignInRequest(user);
-        console.log(project)
-        // setUserid(res?.data.message._id);
-       //    await StoreCookies();
+        const res = await uploadProjects(project);
+        console.log(res)
+        // setProjectId(res?.data.message._id);
+        //await StoreCookies();
     }
 
     return (

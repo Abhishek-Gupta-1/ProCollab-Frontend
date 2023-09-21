@@ -13,29 +13,46 @@ type UserSignIn  = {
  password:string;
 
 }
-export const frontend = async() =>{
-    try{
-       const res = await axios.get(`${URL}/`)
-       return res;
-    }catch(err:any){
-        console.log("Error in making get request");
-        return;
-    }
-}
+
+type PorjectDetails = {
+    title: string;
+    shortdiscription: string;
+    category: string;
+    theme: string;
+    description: string;
+    teckstack: string;
+    projectlink: string;
+    status: string;
+    photo?: string[];
+    universityname: string;
+    qualification: string;
+    collaborator?: string[];
+  };
 
 export const SignUpRequest = async(user:User) =>{
     try{
       return await axios.post(`${URL}/signup`,user)
     }catch(err:any){
-        console.log("Error in making get request")
+        console.log("Error in making Sign Up request")
         return ;
     }
 }
+
 export const SignInRequest = async(user:UserSignIn) =>{
     try{
       return await axios.post(`${URL}/signin`,user);
     }catch(err:any){
-        console.log("Error in making get request")
+        console.log("Error in making Sign in request")
+        return;
+    }
+}
+
+// projects upload 
+export const uploadProjects = async(project:PorjectDetails) =>{
+    try{
+      return await axios.post(`${URL}/uploadprojects`,project);
+    }catch(err:any){
+        console.log("Error in uploading projects ")
         return;
     }
 }
