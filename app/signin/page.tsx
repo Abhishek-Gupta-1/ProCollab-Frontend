@@ -1,4 +1,6 @@
 "use client"
+import { SignInRequest } from '@/api/apis'
+import axios from 'axios'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -12,7 +14,8 @@ const defaultValue = {
 
 export default function Signin() {
 
-    const [user, setUser] = React.useState(defaultValue)
+    const [user, setUser] = React.useState(defaultValue);
+    const [userId, setUserid] = React.useState('')
      
 
     const InputfromText =(e : React.ChangeEvent<HTMLInputElement>) =>{
@@ -21,12 +24,30 @@ export default function Signin() {
     }
 
     const SendDetails = async() => {
-        // const res = await SignInRequest(user);
-        console.log(user)
-        // setUserid(res?.data.message._id);
-       //    await StoreCookies();
+        try {
+            const res = await SignInRequest(user);
+            
+            // console.log(res?.data.message._id);
+        
+            setUserid(res?.data.message._id);
+        
+            console.log(userId);
+            
+            await StoreCookies();
+          } catch (error) {
+            console.error("Error while fetching data:", error);
+          }
     }
 
+    const StoreCookies = async() =>{
+        try{
+          await axios.post('/api/cookies',{
+            userid:userId
+          })
+        }catch(err:any){
+          console.log("Error In Sending The Cookies",err);
+        }
+      }
 
 
     return (
@@ -46,12 +67,12 @@ export default function Signin() {
                         <Image src="/logo.jpg" alt="logo" width={150} height={100} />
                     </div>
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                        Sign in to your account
+                        Sign in
                     </h2>
                 </div>
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form className="space-y-6" action="#" method="POST">
+                    <div className="space-y-6">
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                                 Email address
@@ -102,7 +123,7 @@ export default function Signin() {
                                 Sign in
                             </button>
                         </div>
-                    </form>
+                    </div>
 
 
                 <div className=' flex justify-center'>

@@ -18,7 +18,8 @@ export const frontend = async() =>{
        const res = await axios.get(`${URL}/`)
        return res;
     }catch(err:any){
-        console.log("Error in making get request")
+        console.log("Error in making get request");
+        return;
     }
 }
 
