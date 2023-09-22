@@ -87,7 +87,7 @@ export default function UploadProject() {
                 <div className="space-y-12 mt-20">
                     <div className="border-b-2 border-black pb-12">
 
-                        <h2 className="text-3xl font-semibold leading-7 text-gray-900">Create Project</h2>
+                        <h2 className="pb-15 text-4xl font-semibold leading-9 text-center text-gray-900">Publish Your Project or Research</h2>
                         {/* <p className="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p> */}
 
 
@@ -96,7 +96,7 @@ export default function UploadProject() {
                             {/* Project Name */}
                             <div className="sm:col-span-4">
                                 <label htmlFor="username" className="block text-sm font-medium leading-6 text-black">
-                                    Project Name <span className='text-amber-500'>*</span>
+                                    Project/Research Name <span className='text-amber-500'>*</span>
                                 </label>
                                 <div className="mt-2">
                                     <div className="flex focus:outline-none focus:border-none rounded-md shadow-sm ring-1 ring-inset ring-black focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
@@ -120,7 +120,7 @@ export default function UploadProject() {
 
                             <div className="sm:col-span-4">
                                 <label htmlFor="username" className="block text-sm font-medium leading-6 text-black">
-                                    Project Title <span className='text-amber-500'>*</span>
+                                    Title <span className='text-amber-500'>*</span>
                                 </label>
                                 <div className="mt-2">
                                     <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-black focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
@@ -132,7 +132,7 @@ export default function UploadProject() {
                                             onChange={(e) => InputfromText(e)}
                                             autoComplete="shortdiscription"
                                             className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-sm sm:leading-6'
-                                            placeholder="Short description"
+                                            placeholder="Short description(Must be in 1 line)"
                                         />
                                     </div>
                                 </div>
@@ -141,7 +141,7 @@ export default function UploadProject() {
                             {/* teck stack  */}
                             <div className="sm:col-span-4">
                                 <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
-                                    Technology Used <span className='text-amber-500'>*</span>
+                                    Technology Used
                                 </label>
                                 <div className="mt-2">
                                     <div className="flex focus:outline-none focus:border-none rounded-md shadow-sm ring-1 ring-inset ring-black focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
@@ -153,7 +153,7 @@ export default function UploadProject() {
                                             onChange={(e) => InputfromText(e)}
                                             autoComplete="teckstack"
                                             className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-sm sm:leading-6'
-                                            placeholder="Reactjs,Nextjs,nodejs etc.."
+                                            placeholder="e.g :- HTML, Node.js, LiDAR technology, Electron Microscope etc.."
                                         />
                                     </div>
                                 </div>
@@ -175,7 +175,7 @@ export default function UploadProject() {
                                             onChange={(e) => InputfromText(e)}
                                             autoComplete="theme"
                                             className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-sm sm:leading-6'
-                                            placeholder="Web,Blockchain,AI/Ml atc.."
+                                            placeholder="e.g :- Web, Drone, Genetics, Blockchain, Rover etc.."
                                         />
                                     </div>
                                 </div>
@@ -200,7 +200,8 @@ export default function UploadProject() {
                                         <option>All</option>
                                         <option>Software</option>
                                         <option>Hardware</option>
-                                        <option>Hybrid</option>
+                                        <option>Hybrid(Software+Hardware)</option>
+                                        <option>Others</option>
                                     </select>
                                 </div>
                             </div>
@@ -302,7 +303,7 @@ export default function UploadProject() {
                                 {/* photo Link  */}
                                 <div className="sm:col-span-4 mt-6">
                                     <label htmlFor="username" className="block text-sm font-semibold leading-6 text-gray-900">
-                                        Project Photo Link
+                                        Project Photo Link <span className='text-amber-500'>*</span>
                                     </label>
                                     <div className="mt-2">
                                         <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-black focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
@@ -353,7 +354,7 @@ export default function UploadProject() {
                         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                             <div className="sm:col-span-3">
                                 <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
-                                    Full name
+                                    Full name <span className='text-amber-500'>*</span>
                                 </label>
                                 <div className="mt-2">
                                     <input
@@ -370,7 +371,7 @@ export default function UploadProject() {
                             {/* -----------Email-------------- */}
                             <div className="sm:col-span-3">
                                 <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
-                                    Email address
+                                    Email address <span className='text-amber-500'>*</span>
                                 </label>
                                 <div className="mt-2">
                                     <input
@@ -408,22 +409,44 @@ export default function UploadProject() {
                                 </div>
                             </div>
 
+                            {/* ____________________ collaborators ___________________ */}
+                            <div className="sm:col-span-4 mt-6">
+                                <label htmlFor="username" className="block text-sm font-semibold leading-6 text-gray-900">
+                                    Collaborators
+                                </label>
+                                <div className="mt-2">
+                                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-black focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                        <input
+                                            type="text"
+                                            name="collaborator"
+                                            id="collaborator"
+                                            onChange={(e) => InputfromText(e)}
+                                            autoComplete="collaborator"
+                                            className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-sm sm:leading-6'
+                                            placeholder="Who has helped or are the part of your Project / Research"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
 
                     {/* ____________________________________Education Details _______________________ */}
 
 
-                    <div className="col-span-full">
-                        <h2 className="pb-1 text-3xl font-semibold leading-7 text-gray-900">Education Details</h2>
-                        <p className="pb-6 text-sm" >Where You have worked on this Project</p>
+                    <div className="col-span-full border-b-2 border-black pb-12">
+                        <h2 className="pb-8 text-3xl font-semibold leading-7 text-gray-900">Education Details</h2>
+
 
 
                         <div className="sm:col-span-4 pb-8">
-                            <label htmlFor="username" className="block text-sm font-semibold leading-6 text-gray-900">
+                            <label htmlFor="username" className="block text-base font-semibold leading-6 text-gray-900 pb-3">
                                 Institute Name <span className='text-amber-500'>*</span>
-
+                                <p className="text-xs text-gray-600" >Where You have worked on this Project</p>
                             </label>
+
                             <div className="mt-2">
                                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-black focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                     <input
@@ -433,7 +456,7 @@ export default function UploadProject() {
                                         id="universityname"
                                         autoComplete="universityname"
                                         className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-xs sm:leading-6'
-                                        placeholder="University Name/Collage Name"
+                                        placeholder="University / College / School Name at that time"
                                     />
                                 </div>
                             </div>
@@ -443,8 +466,9 @@ export default function UploadProject() {
                         {/* -----------qualification-------------------------- */}
 
                         <div className="sm:col-span-4">
-                            <label htmlFor="username" className="block text-sm font-semibold leading-6 text-gray-900">
+                            <label htmlFor="username" className="block text-base font-semibold leading-6 text-gray-900 pb-3">
                                 Qualification <span className='text-amber-500'>*</span>
+                                <p className="text-xs text-gray-600" >When You have worked on this Project</p>
                             </label>
                             <div className="mt-2">
                                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-black focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
@@ -455,34 +479,15 @@ export default function UploadProject() {
                                         onChange={(e) => InputfromText(e)}
                                         autoComplete="qualification"
                                         className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-sm sm:leading-6'
-                                        placeholder="Your Qualification"
+                                        placeholder="Qualification at that time"
                                     />
                                 </div>
                             </div>
                         </div>
 
 
-                        {/* collaborators  */}
-                        <div className="sm:col-span-4 mt-6">
-                            <label htmlFor="username" className="block text-sm font-semibold leading-6 text-gray-900">
-                                Collaborators
-                            </label>
-                            <div className="mt-2">
-                                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-black focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                    <input
-                                        type="text"
-                                        name="collaborator"
-                                        id="collaborator"
-                                        onChange={(e) => InputfromText(e)}
-                                        autoComplete="collaborator"
-                                        className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-sm sm:leading-6'
-                                        placeholder="Who has helped or the part part of your project"
-                                    />
-                                </div>
-                            </div>
-                        </div>
 
-                        {/* --------------Image upload------------------ */}
+
                     </div>
 
 
@@ -490,8 +495,8 @@ export default function UploadProject() {
 
 
 
-                    <div className=" pb-8">
-                        <h2 className="text-base font-semibold leading-7 text-gray-900">Collaboration Notifications</h2>
+                    <div className=" pb-6">
+                        <h2 className="text-lg font-semibold leading-7 text-black">Collaboration Notifications</h2>
                         <p className="mt-1 text-xs leading-6 text-gray-600">
                             We will Notify You when someone try to Collaborate with Your Project
                         </p>
@@ -532,7 +537,7 @@ export default function UploadProject() {
                                         </div>
                                     </div> */}
                                     {/* _______________________________________________________________________ */}
-                                    <div className="pt-12 relative flex gap-x-3">
+                                    <div className="pt-8 relative flex gap-x-3">
                                         <div className="flex h-6 items-center">
                                             <input
                                                 id="Agree"
@@ -543,7 +548,7 @@ export default function UploadProject() {
                                         </div>
                                         <div className="text-sm leading-6">
                                             <label htmlFor="Agree" className="font-medium text-black">
-                                                Agree to Share your Project as Open Source
+                                                Agree to Share your Project / Research as Open Source
                                             </label>
                                         </div>
                                     </div>
@@ -558,7 +563,7 @@ export default function UploadProject() {
                     </div>
                 </div>
 
-                <div className="mt-6 flex justify-center items-center  gap-x-6 mb-5">
+                <div className="mt-4 pb-12 flex justify-center items-center  gap-x-6 mb-5">
                     <button
                         type="submit" onClick={(e) => SendDetails(e)}
                         className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
