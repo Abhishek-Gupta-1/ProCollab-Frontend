@@ -1,3 +1,4 @@
+// This is nice
 
 "use client"
 import { useState } from 'react';
@@ -20,6 +21,9 @@ type PorjectDetails = {
     qualification: string;
     collaborator?: string;
     userid: string;
+    fullname: string
+    email: string
+    emailToVerify: string
 };
 
 const initialProjectDetails: PorjectDetails = {
@@ -33,13 +37,52 @@ const initialProjectDetails: PorjectDetails = {
     status: "Completed",
     universityname: "",
     qualification: "",
-    userid: ""
+    userid: "",
+    fullname: "",
+    email: "",
+    emailToVerify: ""
+
 };
+
+
+
 
 export default function UploadProject() {
 
     const [project, setProject] = useState(initialProjectDetails);
     const [projectId, setProjectId] = useState('');
+
+    // For Form Validation_____________________________
+
+    const [email, setEmail] = useState("");
+
+    const [titleError, setTitleError] = useState('');
+    const [shortDescriptionError, setShortDescriptionError] = useState('');
+    const [themeError, setThemeError] = useState('');
+    const [categoryError, setCategoryError] = useState('');
+    const [statusError, setStatusError] = useState('');
+    const [descriptionError, setDescriptionError] = useState('');
+    const [projectLinkError, setProjectLinkError] = useState('');
+    const [fullnameError, setFullnameError] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [universitynameError, setUniversityNameError] = useState("");
+    const [qualificationError, setQualificationError] = useState("");
+
+    const [agreeChecked, setAgreeChecked] = useState(false);
+    const [agreeError, setAgreeError] = useState('');
+
+    const [formValid, setFormValid] = useState(true);
+
+
+    // ___________________________________________
+
+    // Agreement checkbox
+    const handleAgreeChange = (e) => {
+        setAgreeChecked(e.target.checked);
+        setAgreeError('');
+    };
+
+    //   ______________________________________
 
     const InputfromText = (e: React.ChangeEvent<HTMLInputElement>) => {
         setProject({ ...project, [e.target.name]: e.target.value });
@@ -48,6 +91,116 @@ export default function UploadProject() {
 
     const SendDetails = async (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
+
+        // Validate input fields _________________________
+        let isValid = true;
+
+        if (project.title.trim() === '') {
+            setTitleError('Project/Research Name is required.');
+            isValid = false;
+        } else {
+            setTitleError('');
+        }
+
+        if (project.shortdiscription.trim() === '') {
+            setShortDescriptionError('Title is required.');
+            isValid = false;
+        } else {
+            setShortDescriptionError('');
+        }
+
+        if (project.theme.trim() === '') {
+            setThemeError('Theme is required.');
+            isValid = false;
+        } else {
+            setThemeError('');
+        }
+
+        if (project.category.trim() === '--Select--') {
+            setCategoryError('Category is required.');
+            isValid = false;
+        } else {
+            setCategoryError('');
+        }
+
+        if (project.status.trim() === '--Select--') {
+            setStatusError('Project Completion Status is required.');
+            isValid = false;
+        } else {
+            setStatusError('');
+        }
+
+        if (project.description.trim() === '') {
+            setDescriptionError('Detailed Description is required.');
+            isValid = false;
+        } else {
+            setDescriptionError('');
+        }
+
+        if (project.projectlink.trim() === '') {
+            setProjectLinkError('Project Link is required.');
+            isValid = false;
+        } else {
+            setProjectLinkError('');
+        }
+
+        if (project.fullname.trim() === "") {
+            setFullnameError("Full name is required.");
+            isValid = false;
+        } else {
+            setFullnameError("");
+        }
+
+        // Validation for 'email' field
+        if (project.email.trim() === "") {
+            setEmailError("Email address is required.");
+            isValid = false;
+        } else if (!isValidEmail(project.email)) { // Use project.email here
+            setEmailError("Invalid email address.");
+            isValid = false;
+        } else {
+            setEmailError("");
+        }
+
+        // Validation for 'universityname' field
+        if (project.universityname.trim() === "") {
+            setUniversityNameError("University name is required.");
+            isValid = false;
+        } else {
+            setUniversityNameError("");
+        }
+
+        // Validation for 'qualification' field
+        if (project.qualification.trim() === "") {
+            setQualificationError("Qualification is required.");
+            isValid = false;
+        } else {
+            setQualificationError("");
+        }
+
+        // Funtion to Check the entered emil is valid or not________________________
+        function isValidEmail(email: string) {
+            // Regular expression for basic email validation
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+            // Test the email against the regex pattern
+            return emailRegex.test(email);
+        }
+
+        // _____________________________Agreement checkbox
+
+        if (!agreeChecked) {
+            setAgreeError('You must have to agree to Publish');
+            // You can also set 'isValid' to false here if needed.
+            return; // Exit the function early if not checked.
+        }
+
+        // Check if any of the individual field validations failed
+        if (!isValid) {
+            setFormValid(false); // Set form validity to false
+            return; // Exit early if any field is invalid
+        }
+        // ________________________________________________________________________
 
 
         // const inputString = JSON.stringify(project.teckstack);
@@ -69,13 +222,12 @@ export default function UploadProject() {
             const res = await uploadProjects(project);
             console.log(res);
 
-
             toast.success("Project Uploaded");
+
 
         } catch (err: any) {
             console.log("Error in uploading Project")
         }
-
 
         // setProjectId(res?.data.message._id);
         // const inputArray = inputValue.split(',').map((item) => item.trim());
@@ -86,20 +238,19 @@ export default function UploadProject() {
 
 
             <form className='border p-7 w-full md:w-3/5 shadow'>
+
                 <div className="space-y-12 mt-20">
                     <div className="border-b-2 border-black pb-12">
 
                         <h2 className="pb-15 text-4xl font-semibold leading-9 text-center text-gray-900">Publish Your Project or Research</h2>
-                        {/* <p className="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p> */}
-
-
-
                         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                             {/* Project Name */}
                             <div className="sm:col-span-4">
                                 <label htmlFor="username" className="block text-sm font-medium leading-6 text-black">
                                     Project/Research Name <span className='text-amber-500'>*</span>
                                 </label>
+
+
                                 <div className="mt-2">
                                     <div className="flex focus:outline-none focus:border-none rounded-md shadow-sm ring-1 ring-inset ring-black focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                         {/* <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">Enter your Project Name</span> */}
@@ -114,6 +265,9 @@ export default function UploadProject() {
                                             placeholder="Your Project Name "
                                         />
                                     </div>
+                                    <div className="text-red-500">
+                                        {titleError && <p>{titleError}</p>}
+                                    </div>
                                 </div>
                             </div>
                             {/* ------------------------------------------------- */}
@@ -124,6 +278,8 @@ export default function UploadProject() {
                                 <label htmlFor="username" className="block text-sm font-medium leading-6 text-black">
                                     Title <span className='text-amber-500'>*</span>
                                 </label>
+
+
                                 <div className="mt-2">
                                     <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-black focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                         {/* <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">Enter your Project Name</span> */}
@@ -136,6 +292,9 @@ export default function UploadProject() {
                                             className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-sm sm:leading-6'
                                             placeholder="Short description(Must be in 1 line)"
                                         />
+                                    </div>
+                                    <div className="text-red-500">
+                                        {shortDescriptionError && <p>{shortDescriptionError}</p>}
                                     </div>
                                 </div>
                             </div>
@@ -180,6 +339,9 @@ export default function UploadProject() {
                                             placeholder="e.g :- Web, Drone, Genetics, Blockchain, Rover etc.."
                                         />
                                     </div>
+                                    <div className="text-red-500">
+                                        {themeError && <p>{themeError}</p>}
+                                    </div>
                                 </div>
                             </div>
 
@@ -199,12 +361,16 @@ export default function UploadProject() {
                                         autoComplete="category-name"
                                         className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                                     >
+                                        <option>--Select--</option>
                                         <option>All</option>
                                         <option>Software</option>
                                         <option>Hardware</option>
                                         <option>Hybrid(Software+Hardware)</option>
                                         <option>Others</option>
                                     </select>
+                                    <div className="text-red-500">
+                                        {categoryError && <p>{categoryError}</p>}
+                                    </div>
                                 </div>
                             </div>
                             {/* _________________Completion Status________________ */}
@@ -224,10 +390,14 @@ export default function UploadProject() {
                                         autoComplete="completion-name"
                                         className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                                     >
+                                        <option>--Select--</option>
                                         <option>Completed</option>
                                         <option>Under Development</option>
                                         <option>Proposed</option>
                                     </select>
+                                </div>
+                                <div className="text-red-500">
+                                    {statusError && <p>{statusError}</p>}
                                 </div>
                             </div>
 
@@ -248,6 +418,9 @@ export default function UploadProject() {
                                         defaultValue={''}
                                         placeholder=" Write Brief Description about your Project"
                                     />
+                                </div>
+                                <div className="text-red-500">
+                                    {descriptionError && <p>{descriptionError}</p>}
                                 </div>
                                 <div className='border-b-2 border-black pb-12' />
                             </div>
@@ -275,6 +448,9 @@ export default function UploadProject() {
                                                 className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-xs sm:leading-6'
                                                 placeholder="Deployed Link/Source Link"
                                             />
+                                        </div>
+                                        <div className="text-red-500">
+                                            {projectLinkError && <p>{projectLinkError}</p>}
                                         </div>
                                     </div>
                                 </div>
@@ -305,7 +481,7 @@ export default function UploadProject() {
                                 {/* photo Link  */}
                                 <div className="sm:col-span-4 mt-6">
                                     <label htmlFor="username" className="block text-sm font-semibold leading-6 text-gray-900">
-                                        Project Photo Link <span className='text-amber-500'>*</span>
+                                        Project Photo Link
                                     </label>
                                     <div className="mt-2">
                                         <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-black focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
@@ -362,11 +538,16 @@ export default function UploadProject() {
                                     <input
                                         type="text"
                                         name="fullname"
+                                        id="fullName"
                                         onChange={(e) => InputfromText(e)}
-                                        id="first-name"
                                         autoComplete="given-name"
                                         className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-black placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder=" Enter your Name"
+
                                     />
+                                </div>
+                                <div className="text-red-500">
+                                    {fullnameError && <p>{fullnameError}</p>}
                                 </div>
                             </div>
 
@@ -383,7 +564,11 @@ export default function UploadProject() {
                                         onChange={(e) => InputfromText(e)}
                                         autoComplete="email"
                                         className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-black placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder=" Enter valid Email Address"
                                     />
+                                </div>
+                                <div className="text-red-500">
+                                    {emailError && <p>{emailError}</p>}
                                 </div>
                             </div>
 
@@ -461,6 +646,9 @@ export default function UploadProject() {
                                         placeholder="University / College / School Name at that time"
                                     />
                                 </div>
+                                <div className="text-red-500">
+                                    {universitynameError && <p>{universitynameError}</p>}
+                                </div>
                             </div>
                         </div>
 
@@ -483,6 +671,9 @@ export default function UploadProject() {
                                         className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-sm sm:leading-6'
                                         placeholder="Qualification at that time"
                                     />
+                                </div>
+                                <div className="text-red-500">
+                                    {qualificationError && <p>{qualificationError}</p>}
                                 </div>
                             </div>
                         </div>
@@ -546,12 +737,17 @@ export default function UploadProject() {
                                                 name="Agree"
                                                 type="checkbox"
                                                 className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                                checked={agreeChecked}
+                                                onChange={handleAgreeChange}
                                             />
                                         </div>
                                         <div className="text-sm leading-6">
                                             <label htmlFor="Agree" className="font-medium text-black">
                                                 Agree to Share your Project / Research as Open Source
                                             </label>
+                                        </div>
+                                        <div className="text-red-500">
+                                            {agreeError && <p>{agreeError}</p>}
                                         </div>
                                     </div>
                                 </div>
@@ -565,13 +761,20 @@ export default function UploadProject() {
                     </div>
                 </div>
 
-                <div className="mt-4 pb-12 flex justify-center items-center  gap-x-6 mb-5">
+                <div className="mt-4  flex justify-center items-center  gap-x-6 mb-5">
                     <button
                         type="submit" onClick={(e) => SendDetails(e)}
                         className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
                         Publish My Project / Research
                     </button>
+                </div>
+                <div className='pb-12 text-center'>
+                    {!formValid && (
+                        <div className="text-red-500">
+                            Please fill in all required fields above.
+                        </div>
+                    )}
                 </div>
             </form>
         </div>
