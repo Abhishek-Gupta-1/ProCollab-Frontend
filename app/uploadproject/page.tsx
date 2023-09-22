@@ -43,7 +43,7 @@ export default function UploadProject() {
 
     const InputfromText = (e: React.ChangeEvent<HTMLInputElement>) => {
         setProject({ ...project, [e.target.name]: e.target.value });
-        //   console.log(project);
+        console.log(project);
     }
 
     const SendDetails = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -68,6 +68,8 @@ export default function UploadProject() {
 
             const res = await uploadProjects(project);
             console.log(res);
+
+
             toast.success("Project Uploaded");
 
         } catch (err: any) {
