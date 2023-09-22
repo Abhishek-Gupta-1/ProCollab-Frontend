@@ -6,6 +6,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 import Navbar from '@/components/dashboard/Navbar'
 import TypewriterComponent from 'typewriter-effect';
+import Link from 'next/link';
 
 export default function Example() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -37,15 +38,15 @@ export default function Example() {
             <div>
 
                 <div className="mt-10 flex justify-left gap-x-6">
-                    <a
-                        href="#"
+                    <Link
+                        href="/searchprojects"
                         className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
                         Explore Projects
-                    </a>
-                    <a href="/uploadproject" className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                    </Link>
+                    <Link href="/uploadproject" className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                         Upload Projects
-                    </a>
+                    </Link>
                 </div>
             </div>
 

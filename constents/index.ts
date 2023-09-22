@@ -31,3 +31,42 @@ export const Countries = [
     "Malaysia",
     "New Zealand",
 ];
+
+
+export const projects =[
+    {
+        image:'/mikasa.png',
+        title:"Noteworthy technology acquisitions 2021",
+        shortdescription:"Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
+    },
+    {
+        image:'/mikasa.png',
+        title:"Noteworthy technology acquisitions 2021",
+        shortdescription:"Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
+    },
+    {
+        image:'/mikasa.png',
+        title:"Noteworthy technology acquisitions 2021",
+        shortdescription:"Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
+    },
+    {
+        image:'/mikasa.png',
+        title:"Noteworthy technology acquisitions 2021",
+        shortdescription:"Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
+    },
+    {
+        image:'/mikasa.png',
+        title:"Noteworthy technology acquisitions 2021",
+        shortdescription:"Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
+    },
+    {
+        image:'/mikasa.png',
+        title:"Noteworthy technology acquisitions 2021",
+        shortdescription:"Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
+    },
+    {
+        image:'/mikasa.png',
+        title:"Noteworthy technology acquisitions 2021",
+        shortdescription:"Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
+    },
+]

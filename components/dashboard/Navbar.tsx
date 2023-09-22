@@ -42,7 +42,7 @@ export default function Navbar() {
                                    userId && (
                                     <div className='flex gap-3'>
                                         <li>
-                                            <Link className="hover:text-gray-200" href="#">
+                                            <Link className="hover:text-gray-200" href="/searchprojects">
                                                 Search Project
                                             </Link>
                                        </li>
