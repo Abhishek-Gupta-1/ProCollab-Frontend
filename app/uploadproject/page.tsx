@@ -23,7 +23,7 @@ type PorjectDetails = {
     userid: string;
     fullname: string
     email: string
-    emailToVerify: string
+    // emailToVerify: string
 };
 
 const initialProjectDetails: PorjectDetails = {
@@ -40,7 +40,7 @@ const initialProjectDetails: PorjectDetails = {
     userid: "",
     fullname: "",
     email: "",
-    emailToVerify: ""
+    // emailToVerify: ""
 
 };
 
@@ -217,7 +217,6 @@ export default function UploadProject() {
                 project.userid = userId
             }
             console.log(project)
-            console.log(project.teckstack)
 
             const res = await uploadProjects(project);
             console.log(res);

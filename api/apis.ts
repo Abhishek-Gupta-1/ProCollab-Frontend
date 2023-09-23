@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const URL = 'http://localhost:8000';
+const URL = process.env.NEXT_APP_BACKEND_URL;
 
 type User  = {
  fullname:string;
