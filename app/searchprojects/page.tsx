@@ -36,14 +36,14 @@ const Page = () => {
 
     {/* search bar  */}
         <div className="flex justify-center p-4 text-white">
-          <div className="border w-4/5 flex rounded-[20px]  shadow">
+          <div className="border w-full md:w-4/5 flex rounded-[20px]  shadow">
                   <Search className="mt-2 pl-2"/>
                  <input type="text" className="w-full p-2 bg-transparent focus:border-none focus:outline-none placeholder:text-white" placeholder="Search" />
           </div>
        </div>
 
     {/* projects  */}
-        <div className=" flex flex-wrap justify-between ">
+        <div className=" flex flex-wrap flex-col md:flex-row justify-between  items-center">
 
             {
                 Demoprojects.map((project:any,i:number)=>(
