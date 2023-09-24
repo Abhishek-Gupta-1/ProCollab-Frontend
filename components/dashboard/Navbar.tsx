@@ -28,7 +28,7 @@ export default function Navbar() {
                     <div className="px-5 xl:px-12 py-3 flex w-full items-center object-top">
                         <Link className="text-3xl font-bold font-heading" href="/">
                             <div className=' flex justify-center pt-0 mt-0 pb-0 mb-0'>
-                                <Image src="/NLogo.jpg" alt="ProCollab" className='bg-transparent' width={150} height={100} />
+                                <Image src="/Nlogo.jpg" alt="ProCollab" className='bg-transparent' width={150} height={100} />
                             </div>
                         </Link>
                         {/* Nav Links */}
