@@ -34,7 +34,7 @@ export const Countries = [
 ];
 
 
-export const projects =[
+export const Demoprojects =[
     {
         image:'/mikasa.png',
         title:"Noteworthy technology acquisitions 2021",
