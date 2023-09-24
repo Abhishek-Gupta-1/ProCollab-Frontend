@@ -1,4 +1,3 @@
-// This is nice
 
 "use client"
 import { useState } from 'react';
@@ -77,7 +76,7 @@ export default function UploadProject() {
     // ___________________________________________
 
     // Agreement checkbox
-    const handleAgreeChange = (e) => {
+    const handleAgreeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setAgreeChecked(e.target.checked);
         setAgreeError('');
     };
@@ -89,7 +88,13 @@ export default function UploadProject() {
         console.log(project);
     }
 
-    const SendDetails = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const InputfromSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setProject({ ...project, [e.target.name]: e.target.value });
+        console.log(project);
+    }
+
+
+    const SendDetails = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
 
         // Validate input fields _________________________
@@ -354,9 +359,9 @@ export default function UploadProject() {
                                 </label>
                                 <div className="mt-2">
                                     <select
+                                        onChange={(e) => InputfromSelect(e)}
                                         id="Category"
                                         name="category"
-                                        onChange={(e) => InputfromText(e)}
                                         autoComplete="category-name"
                                         className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                                     >
@@ -385,7 +390,7 @@ export default function UploadProject() {
                                     <select
                                         id="status"
                                         name="status"
-                                        onChange={(e) => InputfromText(e)}
+                                        onChange={(e) => InputfromSelect(e)}
                                         autoComplete="completion-name"
                                         className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                                     >
@@ -408,11 +413,11 @@ export default function UploadProject() {
                                     Detailed Description <span className='text-amber-500'>*</span>
                                 </label>
                                 <div className="mt-2">
-                                    <textarea
+                                    <input
                                         id="description"
                                         name="description"
                                         onChange={(e) => InputfromText(e)}
-                                        rows={3}
+                                        // rows={3}
                                         className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-black placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         defaultValue={''}
                                         placeholder=" Write Brief Description about your Project"
@@ -580,7 +585,7 @@ export default function UploadProject() {
                                     <select
                                         id="country"
                                         name="country"
-                                        onChange={(e) => InputfromText(e)}
+                                        onChange={(e) => InputfromSelect(e)}
                                         autoComplete="country-name"
                                         className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                                     >
@@ -712,23 +717,7 @@ export default function UploadProject() {
                                             </label>
                                         </div>
                                     </div>
-                                    {/* __________________________________________________________ */}
-                                    {/* <div className="relative flex gap-x-3 border-b-2 border-black pb-12">
-                                        <div className="flex h-6 items-center">
-                                            <input
-                                                id="no"
-                                                name="no"
-                                                type="checkbox"
-                                                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                                            />
-                                        </div>
-                                        <div className="text-sm leading-6">
-                                            <label htmlFor="no" className="font-medium text-black">
-                                                No
-                                            </label>
-                                        </div>
-                                    </div> */}
-                                    {/* _______________________________________________________________________ */}
+
                                     <div className="pt-8 relative flex gap-x-3">
                                         <div className="flex h-6 items-center">
                                             <input
@@ -737,7 +726,8 @@ export default function UploadProject() {
                                                 type="checkbox"
                                                 className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                                                 checked={agreeChecked}
-                                                onChange={handleAgreeChange}
+                                                onChange={(e) => handleAgreeChange(e)}
+
                                             />
                                         </div>
                                         <div className="text-sm leading-6">
