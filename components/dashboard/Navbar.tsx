@@ -5,8 +5,7 @@ import Link from 'next/link';
 import Cookies from 'js-cookie'
 
 import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import {  Menu, Transition } from '@headlessui/react'
 
 
 
@@ -17,6 +16,7 @@ function classNames(...classes: any) {
 export default function Navbar() {
 
     const userId = Cookies.get('userid');
+    const adminId = Cookies.get('adminid');
 
     return (
 
@@ -43,94 +43,96 @@ export default function Navbar() {
                                     Search Project
                                 </Link>
                             </li>
-                            <li>
-                                <Link className="hover:text-gray-200 cursor-pointer" href="/uploadproject">
-                                    Upload Project
-                                </Link>
-                            </li>
-                            <li>
-                                <Link className="hover:text-gray-200 cursor-pointer" href="/dashboard">
-                                    Dashboard
-                                </Link>
-                            </li>
+                            {
+                                userId &&
+                                <li>
+                                    <Link className="hover:text-gray-200 cursor-pointer" href="/uploadproject">
+                                        Upload Project
+                                    </Link>
+                                </li>
+                            }
+
+                            {
+                                adminId &&
+                                <li>
+                                    <Link className="hover:text-gray-200 cursor-pointer" href="/dashboard">
+                                        Dashboard
+                                    </Link>
+                                </li>
+                            }
                         </ul>
                         {/* Header Icons */}
 
 
-                        {/* <div className='bg-white rounded'>
+                        <div className='bg-white rounded border border-yellow-400 absolute top-4 right-3'>
                                 <Link href='/signin'>
-                                    <p className='font-semibold text-black px-4 p-2 text-sm'>Sign In</p>
+                                    <p className='font-semibold text-black px-4 p-2 text-sm'>Get Started</p>
                                 </Link>
-                            </div> */}
+                            </div>
 
                         {/* Profile DropDown */}
 
-                        <Menu as="div" className="relative pl-20 ml-14  ">
-                            <div>
-                                <Menu.Button className="relative rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                                    <span className="absolute " />
-                                    <Image
-                                        className="h-8 w-8 rounded-full" width={32} height={32}
-                                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                        alt=""
-                                    />
-                                </Menu.Button>
-                            </div>
-                            <Transition
-                                as={Fragment}
-                                enter="transition ease-out duration-100"
-                                enterFrom="transform opacity-0 scale-95"
-                                enterTo="transform opacity-100 scale-100"
-                                leave="transition ease-in duration-75"
-                                leaveFrom="transform opacity-100 scale-100"
-                                leaveTo="transform opacity-0 scale-95"
-                            >
-                                <Menu.Items className="absolute right-0 z-10 mt-2 w-48  rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                    <Menu.Item>
-                                        {({ active }) => (
-                                            <Link
-                                                href="#"
-                                                className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                            >
-                                                Your Profile
-                                            </Link>
-                                        )}
-                                    </Menu.Item>
-                                    <Menu.Item>
-                                        {({ active }) => (
-                                            <Link
-                                                href="/signin"
-                                                className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                            >
-                                                Sign In
-                                            </Link>
-                                        )}
-                                    </Menu.Item>
-                                    <Menu.Item>
-                                        {({ active }) => (
-                                            <a
-                                                href="/signup"
-                                                className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                            >
-                                                Sign Up
-                                            </a>
-                                        )}
-                                    </Menu.Item>
-                                </Menu.Items>
-                            </Transition>
-                        </Menu>
+                        {
+                            userId &&
+                                <Menu as="div" className="relative pl-20 ml-14  ">
+                                    <div>
+                                        <Menu.Button className="relative rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                                            <span className="absolute " />
+                                            <Image
+                                                className="h-8 w-8 rounded-full" width={32} height={32}
+                                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                                alt=""
+                                            />
+                                        </Menu.Button>
+                                    </div>
+                                    <Transition
+                                        as={Fragment}
+                                        enter="transition ease-out duration-100"
+                                        enterFrom="transform opacity-0 scale-95"
+                                        enterTo="transform opacity-100 scale-100"
+                                        leave="transition ease-in duration-75"
+                                        leaveFrom="transform opacity-100 scale-100"
+                                        leaveTo="transform opacity-0 scale-95"
+                                    >
+                                        <Menu.Items className="absolute right-0 z-10 mt-2 w-48  rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                            <Menu.Item>
+                                                {({ active }) => (
+                                                    <Link
+                                                        href="/profile"
+                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                    >
+                                                        Profile
+                                                    </Link>
+                                                )}
+                                            </Menu.Item>
+                                            <Menu.Item>
+                                                {({ active }) => (
+                                                    <Link
+                                                        href="/signin"
+                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                    >
+                                                        Sign Out
+                                                    </Link>
+                                                )}
+                                            </Menu.Item>
+                                        
+                                        </Menu.Items>
+                                    </Transition>
+                                </Menu>
+                        }
+
 
 
                     </div>
 
                     {/* Responsive navbar */}
-                    {/* 
-                    <span className="flex absolute -mt-5 ml-4">
+                    
+                    {/* <span className="flex absolute -mt-5 ml-4">
                         <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75" />
                         <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
-                    </span> */}
+                    </span>
 
-                    {/* <a className="navbar-burger self-center mr-12 xl:hidden" href="#">
+                    <a className="navbar-burger self-center mr-12 xl:hidden" href="#">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-6 w-6 hover:text-gray-200"

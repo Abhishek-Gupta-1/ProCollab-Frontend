@@ -50,11 +50,11 @@ export default function Example() {
                             <div className="mt-10 flex flex-col md:flex-row justify-left  md:gap-x-6 gap-y-10">
                                 <Link
                                     href="/searchprojects"
-                                    className=" bg-blue-500 shadow-lg shadow-blue-500/50 rounded-md  px-3.5 py-2.5 text-sm font-semibold text-white  hover:bg-purple-500 hover:shadow-purple-500/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                    className=" bg-blue-500 shadow-lg  rounded-md  px-3.5 py-2.5 text-sm font-semibold text-white  hover:bg-purple-500  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                 >
                                     Search Projects
                                 </Link>
-                                <Link href="/uploadproject" className="bg-blue-500 shadow-lg shadow-blue-500/50 rounded-md  px-3.5 py-2.5 text-sm font-semibold text-white  hover:bg-purple-500 hover:shadow-purple-500/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                <Link href="/uploadproject" className="bg-blue-500 shadow-lg  rounded-md  px-3.5 py-2.5 text-sm font-semibold text-white   focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                                     Upload Projects
                                 </Link>
                             </div>
