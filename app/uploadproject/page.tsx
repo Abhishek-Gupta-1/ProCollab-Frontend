@@ -93,6 +93,10 @@ export default function UploadProject() {
         console.log(project);
     }
 
+    function TextareaChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
+        setProject({ ...project, [e.target.name]: e.target.value });
+        console.log(project);
+    }
 
     const SendDetails = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
@@ -413,11 +417,11 @@ export default function UploadProject() {
                                     Detailed Description <span className='text-amber-500'>*</span>
                                 </label>
                                 <div className="mt-2">
-                                    <input
+                                    <textarea
                                         id="description"
                                         name="description"
-                                        onChange={(e) => InputfromText(e)}
-                                        // rows={3}
+                                        onChange={(e) => TextareaChange(e)}
+                                        rows={3}
                                         className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-black placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         defaultValue={''}
                                         placeholder=" Write Brief Description about your Project"

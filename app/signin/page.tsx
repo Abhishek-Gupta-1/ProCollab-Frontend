@@ -10,37 +10,37 @@ import { SignInRequest } from '@/api/apis'
 
 
 const defaultValue = {
-    email : '',
-    password : '',
-} 
+    email: '',
+    password: '',
+}
 
 
 export default function Signin() {
 
     const [user, setUser] = React.useState(defaultValue);
     // const [userId, setUserid] = React.useState('')
-     
 
-    const InputfromText =(e : React.ChangeEvent<HTMLInputElement>) =>{
-        setUser({...user,[e.target.name]:e.target.value});
+
+    const InputfromText = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setUser({ ...user, [e.target.name]: e.target.value });
         //   console.log(user);
     }
 
-    const SendDetails = async() => {
+    const SendDetails = async () => {
         try {
             const res = await SignInRequest(user);
-            
+
             // console.log(res?.data.message._id);
-        
+
             // setUserid(res?.data.message._id);
-        
+
             // console.log(userId);
-            Cookies.set('userid',res?.data.message._id);
+            Cookies.set('userid', res?.data.message._id);
             toast.success("Successfully logged In");
 
-          } catch (error) {
+        } catch (error) {
             console.error("Error while fetching data:", error);
-          }
+        }
     }
 
 
@@ -57,9 +57,9 @@ export default function Signin() {
 
             <div className="flex min-h-full flex-1 flex-col justify-center px-6  py-12 lg:px-8">
                 <div className="sm:mx-auto sm:w-full  sm:max-w-sm">
-                    <div className=' flex justify-center '>
+                    {/* <div className=' flex justify-center '>
                         <Image src="/logo.jpg" alt="logo" width={150} height={100} />
-                    </div>
+                    </div> */}
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                         Sign in
                     </h2>
@@ -76,7 +76,7 @@ export default function Signin() {
                                     id="email"
                                     name="email"
                                     type="email"
-                                    onChange={(e)=>InputfromText(e)}
+                                    onChange={(e) => InputfromText(e)}
                                     autoComplete="email"
                                     required
                                     className="block w-full p-5 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -95,7 +95,7 @@ export default function Signin() {
                                 <input
                                     id="password"
                                     name="password"
-                                    onChange={(e)=>InputfromText(e)}
+                                    onChange={(e) => InputfromText(e)}
                                     type="password"
                                     autoComplete="current-password"
                                     required
@@ -111,7 +111,7 @@ export default function Signin() {
 
                         <div>
                             <button
-                                type="submit"  onClick={()=>SendDetails()}
+                                type="submit" onClick={() => SendDetails()}
                                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >
                                 Sign in
@@ -120,11 +120,11 @@ export default function Signin() {
                     </div>
 
 
-                <div className=' flex justify-center'>
-                    <Link href='/signup'>
-                       <p className='text-blue-800 mt-6'>{`Don't have a account? create one`}</p>
-                    </Link>
-                </div>
+                    <div className=' flex justify-center'>
+                        <Link href='/signup'>
+                            <p className='text-blue-800 mt-6'>{`Don't have a account? create one`}</p>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </>
