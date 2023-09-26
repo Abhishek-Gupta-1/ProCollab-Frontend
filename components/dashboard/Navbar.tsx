@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Cookies from 'js-cookie'
-
+import { useRouter } from 'next/navigation';
 import { Fragment } from 'react'
 import {  Menu, Transition } from '@headlessui/react'
 
@@ -14,9 +14,14 @@ function classNames(...classes: any) {
 }
 
 export default function Navbar() {
-
+    const router = useRouter();
     const userId = Cookies.get('userid');
     const adminId = Cookies.get('adminid');
+
+    const handleSignOut = () =>{
+        Cookies.remove('userid');
+        router.refresh();
+    }
 
     return (
 
@@ -63,12 +68,15 @@ export default function Navbar() {
                         </ul>
                         {/* Header Icons */}
 
-
+                      {
+                        !userId &&
                         <div className='bg-white rounded border border-yellow-400 absolute top-4 right-3'>
                                 <Link href='/signin'>
                                     <p className='font-semibold text-black px-4 p-2 text-sm'>Get Started</p>
                                 </Link>
-                            </div>
+                        </div>
+                      }
+
 
                         {/* Profile DropDown */}
 
@@ -99,7 +107,7 @@ export default function Navbar() {
                                                 {({ active }) => (
                                                     <Link
                                                         href="/profile"
-                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 cursor-pointer')}
                                                     >
                                                         Profile
                                                     </Link>
@@ -107,12 +115,12 @@ export default function Navbar() {
                                             </Menu.Item>
                                             <Menu.Item>
                                                 {({ active }) => (
-                                                    <Link
-                                                        href="/signin"
-                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                    <p
+                                                        onClick={handleSignOut}
+                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 cursor-pointer')}
                                                     >
                                                         Sign Out
-                                                    </Link>
+                                                    </p>
                                                 )}
                                             </Menu.Item>
                                         

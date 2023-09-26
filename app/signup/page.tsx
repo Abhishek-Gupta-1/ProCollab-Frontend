@@ -1,10 +1,10 @@
 "use client"
 
 import { SignUpRequest } from '@/api/apis';
-import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react';
 import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 const defaultValue = {
     fullname: '',
@@ -13,6 +13,8 @@ const defaultValue = {
 }
 
 export default function Signup() {
+
+    const router = useRouter();
 
     const [user, setUser] = React.useState(defaultValue)
 
@@ -24,9 +26,11 @@ export default function Signup() {
     const SendDetails = async () => {
         try {
             const res = await SignUpRequest(user);
-            toast.success("Successfully Sinned Up");
+            toast.success("Successfully Sign Up");
         } catch (err: any) {
             console.log("Error in sign up", err);
+        }finally{
+            router.push('/signin')
         }
         // setUserid(res?.data.message._id);
         // console.log(userId)

@@ -1,10 +1,10 @@
 "use client"
-import axios from 'axios'
-import Image from 'next/image'
+
 import Link from 'next/link'
 import React from 'react'
 import Cookies from 'js-cookie';
 import { toast } from 'react-hot-toast'
+import { redirect, useRouter } from 'next/navigation';
 
 import { SignInRequest } from '@/api/apis'
 
@@ -16,6 +16,7 @@ const defaultValue = {
 
 
 export default function Signin() {
+    const router = useRouter();
 
     const [user, setUser] = React.useState(defaultValue);
     // const [userId, setUserid] = React.useState('')
@@ -40,6 +41,9 @@ export default function Signin() {
 
         } catch (error) {
             console.error("Error while fetching data:", error);
+        }finally{
+            router.refresh()
+            router.push('/')
         }
     }
 
