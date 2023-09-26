@@ -49,20 +49,20 @@ const Page = () => {
                 Demoprojects.map((project:any,i:number)=>(
                     
                     <div  key={i} className=" mt-8 mb-5  max-w-xs  bg-gray-900  border-gray-200 rounded-lg shadow  dark:border-gray-700">
-                        <Link  href={`/searchprojects/${productId}`}>
+                        <Link  href={`/searchprojects/${project.id}`}>
                             <div className="flex flex-col justify-between h-full">
 
                                 <div className="w-full">
-                                    <Link href={`/searchprojects/${productId}`}>
+                                    <Link href={`/searchprojects/${project.id}`}>
                                         <Image className="rounded-t-lg w-full" width={100} height={50} src='/mikasa.png' alt="Logo" />
                                     </Link>
                                 </div>
                                 <div className="p-5  flex flex-col flex-1 ">
-                                    <a href={`/searchprojects/${productId}`}>
+                                    <a href={`/searchprojects/${project.id}`}>
                                         <h5 className="mb-2 text-2xl font-semibold tracking-tight text-white">{project.title}</h5>
                                     </a>
                                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{project.shortdescription}</p>
-                                    <Link href={`/searchprojects/${productId}`} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                    <Link href={`/searchprojects/${project.id}`} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                         Read more
                                     </Link>
                                 </div>

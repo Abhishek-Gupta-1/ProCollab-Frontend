@@ -35,47 +35,52 @@ export const Countries = [
 
 
 export const Demoprojects =[
-    {
+    {   id:1,
         image:'/mikasa.png',
         title:"Noteworthy technology acquisitions 2021",
         shortdescription:"Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
     },
-    {
+    {    id:2,
         image:'/mikasa.png',
         title:"Noteworthy technology acquisitions 2021",
         shortdescription:"Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
     },
-    {
+    {    id:3,
         image:'/mikasa.png',
         title:"Noteworthy technology acquisitions 2021",
         shortdescription:"Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
     },
-    {
+    {   
+        id:4,
         image:'/mikasa.png',
         title:"Noteworthy technology acquisitions 2021",
         shortdescription:"Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
     },
-    {
+    {   id:5,
         image:'/mikasa.png',
         title:"Noteworthy technology acquisitions 2021",
         shortdescription:"Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
     },
-    {
+    {   
+        id:6,
         image:'/mikasa.png',
         title:"Noteworthy technology acquisitions 2021",
         shortdescription:"Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
     },
-    {
+    {   
+        id:7,
         image:'/mikasa.png',
         title:"Noteworthy technology acquisitions 2021",
         shortdescription:"Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
     },
-    {
+    {   
+        id:8,
         image:'/mikasa.png',
         title:"Noteworthy technology acquisitions 2021",
         shortdescription:"Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
     },
-    {
+    {   
+        id:9,
         image:'/mikasa.png',
         title:"Noteworthy technology acquisitions 2021",
         shortdescription:"Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",

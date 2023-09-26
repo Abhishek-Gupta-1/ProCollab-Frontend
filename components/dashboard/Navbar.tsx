@@ -48,6 +48,11 @@ export default function Navbar() {
                                     Upload Project
                                 </Link>
                             </li>
+                            <li>
+                                <Link className="hover:text-gray-200 cursor-pointer" href="/dashboard">
+                                    Dashboard
+                                </Link>
+                            </li>
                         </ul>
                         {/* Header Icons */}
 

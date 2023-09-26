@@ -1,7 +1,29 @@
+"use client"
+import { getProjectDeatils } from '@/api/apis'
 import Image from 'next/image'
-import React from 'react'
+import { useEffect } from 'react'
 
-const Page = () => {
+
+
+const Page = ({ params }:any) => {
+  
+  // console.log(params.id)
+
+useEffect(() => {
+  getProject();
+}, [])
+
+const getProject = async() =>{
+  try{
+    const res = await getProjectDeatils(params.id);
+    console.log(res)
+  }catch(err:any){
+    console.log("Error in geting the project details",err);
+  }
+}
+
+
+
   return (
     <div className='bg-black flex justify-center items-center h-full'>
           <div className=" md:w-[1024px] font-sans  text-white pb-8 bg-gray-900/40 p-4" >
