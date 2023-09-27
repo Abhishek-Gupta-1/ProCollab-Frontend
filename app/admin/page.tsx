@@ -1,16 +1,19 @@
 "use client"
-import { useState } from 'react';
+
 import Link from 'next/link'
 import React from 'react'
 import Cookies from 'js-cookie';
 import { toast } from 'react-hot-toast'
 import { redirect, useRouter } from 'next/navigation';
+
 import { SignInRequest } from '@/api/apis'
+
 
 const defaultValue = {
     email: '',
     password: '',
 }
+
 
 export default function Signin() {
     const router = useRouter();
@@ -44,15 +47,18 @@ export default function Signin() {
         }
     }
 
+
     return (
         <>
+
+
             <div className="flex min-h-full flex-1 flex-col justify-center px-6  py-12 lg:px-8">
                 <div className="sm:mx-auto sm:w-full  sm:max-w-sm">
                     {/* <div className=' flex justify-center '>
                         <Image src="/logo.jpg" alt="logo" width={150} height={100} />
                     </div> */}
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                        User Login
+                        Admin Login
                     </h2>
                 </div>
 
@@ -70,7 +76,7 @@ export default function Signin() {
                                     onChange={(e) => InputfromText(e)}
                                     autoComplete="email"
                                     required
-                                    className="block w-full p-5 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    className="block w-full p-5 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
                                 />
                             </div>
                         </div>
@@ -80,6 +86,7 @@ export default function Signin() {
                                 <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
                                     Password
                                 </label>
+
                             </div>
                             <div className="mt-2">
                                 <input
@@ -89,11 +96,11 @@ export default function Signin() {
                                     type="password"
                                     autoComplete="current-password"
                                     required
-                                    className="block w-full p-5 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    className="block w-full p-5 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
                                 />
                             </div>
                             <div className="text-sm">
-                                <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                                <a href="#" className="font-semibold text-green-700 hover:text-green-600">
                                     Forgot password?
                                 </a>
                             </div>
@@ -102,33 +109,37 @@ export default function Signin() {
                         <div>
                             <button
                                 type="submit" onClick={() => SendDetails()}
-                                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                className="flex w-full justify-center rounded-md bg-green-700 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >
                                 Log in
                             </button>
                         </div>
                     </div>
 
-                    <div className='pb-12 flex justify-center'>
+
+                    <div className=' flex justify-center'>
                         <Link href='/signup'>
-                            <p className='text-blue-800 mt-6'>{`Don't have a account? create one`}</p>
+                            <p className='text-green-700 mt-6 pb-12'>{`Don't have a account? create one`}</p>
                         </Link>
                     </div>
 
-                    <div className="bg-gray-400 h-0.5 w-full"></div>
+                    <div className="bg-gray-300 h-0.5 w-full"></div>
 
                     <div>
                         <Link
-                            href='/admin'
+                            href='/signin'
                             type="submit"
-                            className="flex w-full mt-12 justify-center rounded-md bg-green-700 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                            className="flex w-full mt-12 justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                         >
-                            Admin Login
+                            User Login
                         </Link>
 
                     </div>
+
+
+
                 </div>
-            </div >
+            </div>
         </>
     )
 }

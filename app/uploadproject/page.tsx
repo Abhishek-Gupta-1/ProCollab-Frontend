@@ -2,6 +2,7 @@
 "use client"
 import { useState } from 'react';
 import { Countries } from '../../constents'
+import { Institution } from '../../constents';
 import { uploadProjects } from '@/api/apis';
 import Cookies from 'js-cookie';
 import toast from 'react-hot-toast';
@@ -21,11 +22,13 @@ type PorjectDetails = {
     status: string;
     photo?: string;
     universityname: string;
+    institutionname: string;
     qualification: string;
     collaborator?: string;
     userid: string;
-    fullname: string
-    email: string
+    fullname: string;
+    email: string;
+    Institution: string;
     // emailToVerify: string
 };
 
@@ -39,10 +42,12 @@ const initialProjectDetails: PorjectDetails = {
     projectlink: "",
     status: "Completed",
     universityname: "",
+    institutionname: "",
     qualification: "",
     userid: "",
     fullname: "",
     email: "",
+    Institution: "",
     // emailToVerify: ""
 
 };
@@ -64,7 +69,6 @@ export default function UploadProject() {
     // For Form Validation_____________________________
 
     const [email, setEmail] = useState("");
-
     const [titleError, setTitleError] = useState('');
     const [shortDescriptionError, setShortDescriptionError] = useState('');
     const [themeError, setThemeError] = useState('');
@@ -75,6 +79,7 @@ export default function UploadProject() {
     const [fullnameError, setFullnameError] = useState("");
     const [emailError, setEmailError] = useState("");
     const [universitynameError, setUniversityNameError] = useState("");
+    const [institutionnameError, setInstitutionNameError] = useState('');
     const [qualificationError, setQualificationError] = useState("");
 
     const [agreeChecked, setAgreeChecked] = useState(false);
@@ -98,8 +103,13 @@ export default function UploadProject() {
         console.log(project);
     }
 
+    // const InputfromSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    //     setProject({ ...project, [e.target.name]: e.target.value });
+    //     console.log(project);
+    // }
     const InputfromSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setProject({ ...project, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+        setProject({ ...project, [name]: value });
         console.log(project);
     }
 
@@ -181,12 +191,20 @@ export default function UploadProject() {
             setEmailError("");
         }
 
-        // Validation for 'universityname' field
-        if (project.universityname.trim() === "") {
-            setUniversityNameError("University name is required.");
+
+        // Institution Validation
+
+        if (project.institutionname.trim() === "--Other--" && project.universityname.trim() === "") {
+            setUniversityNameError("Institution name is required.");
             isValid = false;
-        } else {
+        }
+        else if (project.institutionname.trim() === "--Select--") {
+            setInstitutionNameError("Institution name is required.");
+            isValid = false;
+        }
+        else {
             setUniversityNameError("");
+            setInstitutionNameError("");
         }
 
         // Validation for 'qualification' field
@@ -294,7 +312,7 @@ export default function UploadProject() {
                                             type="text"
                                             name="title"
                                             id="title"
-                                            autoComplete="username"
+                                            autoComplete=""
                                             onChange={(e) => InputfromText(e)}
                                             // className="block flex-1 border-0 bg-transparent p-8 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                             className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-sm sm:leading-6'
@@ -452,7 +470,7 @@ export default function UploadProject() {
                                         rows={3}
                                         className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-black placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         defaultValue={''}
-                                        placeholder=" Write Brief Description about your Project"
+                                        placeholder=" Write Brief Description about your Project, Suggestion and Feedback for others "
                                     />
                                 </div>
                                 <div className="text-red-500">
@@ -608,7 +626,7 @@ export default function UploadProject() {
                                 </div>
                             </div>
 
-                            {/* ____________Institution Details________________ */}
+                            {/* ____________Country________________ */}
                             <div className="sm:col-span-3">
                                 <label htmlFor="country" className="block text-sm font-semibold leading-6 text-gray-900">
                                     Country
@@ -669,17 +687,49 @@ export default function UploadProject() {
                                 Institute Name <span className='text-amber-500'>*</span>
                                 <p className="text-xs text-gray-600" >Where You have worked on this Project</p>
                             </label>
+                            {/* ----------------------Select Institution-------------------------------- */}
+                            <div className="sm:col-span-3">
+                                <label htmlFor="country" className="block text-sm font-semibold leading-6 text-gray-900">
+                                    Select Institution
+                                </label>
+                                <div className="mt-2">
+                                    <select
+                                        id="institutionname"
+                                        name="institutionname"
+                                        onChange={(e) => InputfromSelect(e)}
+                                        autoComplete=" "
+                                        className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                                    >
 
-                            <div className="mt-2">
+                                        {
+                                            Institution.map((count: string, i: number) => (
+                                                <option key={i}>{count}</option>
+                                            ))
+                                        }
+
+                                    </select>
+                                </div>
+                                <div className="text-red-500">
+                                    {institutionnameError && <p>{institutionnameError}</p>}
+                                </div>
+                            </div>
+
+                            {/* ---------------Others------------------------ */}
+                            <div className="mt-6 ">
+                                <label htmlFor="Institution" className="block text-sm font-semibold leading-6 text-gray-900">
+                                    Other
+                                    <p className="text-xs pb-4 text-gray-600" >Write Institution Name here if not Mention Above</p>
+
+                                </label>
                                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-black focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                     <input
                                         type="text"
                                         name="universityname"
                                         onChange={(e) => InputfromText(e)}
                                         id="universityname"
-                                        autoComplete="universityname"
+                                        autoComplete="University name"
                                         className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-xs sm:leading-6'
-                                        placeholder="University / College / School Name at that time"
+                                        placeholder="University / College / School Name"
                                     />
                                 </div>
                                 <div className="text-red-500">
@@ -705,7 +755,7 @@ export default function UploadProject() {
                                         onChange={(e) => InputfromText(e)}
                                         autoComplete="qualification"
                                         className='flex-1 border-0 bg-transparent p-2 text-gray-900 placeholder:text-gray-400  focus:ring-0 sm:text-sm sm:leading-6'
-                                        placeholder="Qualification at that time"
+                                        placeholder="What are you Studying at that time"
                                     />
                                 </div>
                                 <div className="text-red-500">
