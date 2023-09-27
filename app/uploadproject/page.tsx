@@ -9,6 +9,11 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
+import * as Dialog from '@radix-ui/react-dialog'
+import { X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Progress } from "@/components/ui/progress"
+
 
 
 type PorjectDetails = {
@@ -64,6 +69,7 @@ export default function UploadProject() {
 
     const [project, setProject] = useState(initialProjectDetails);
     const [projectId, setProjectId] = useState('');
+    const [percentage, setPercentage] = useState();
     const router = useRouter();
 
     // For Form Validation_____________________________
@@ -253,29 +259,9 @@ export default function UploadProject() {
                 project.userid = userId
             }
             console.log(project)
-            data.title =project.title;
-            data.shortdescription = project.shortdiscription;
-            data.description = project.description
 
-            console.log(data)
-
-            // const res = await uploadProjects(project);
-            const res = await axios.post('https://procollab-plagiarism.onrender.com/get',data);
-
-            if(!res.data){
-                 toast('Loading')
-            }else{
-                const firstObject = res.data[0];
-                console.log(res);
-                const message = firstObject.status;
-                const percentage = firstObject.percentage;
-                console.log(message)   
-                Cookies.set('status',message);
-                Cookies.set('percentage',percentage);
-           
-                router.push('/plagarism')
-            }
-            console.log(res.data);
+            const res = await uploadProjects(project);
+            console.log(res);
            
 
         } catch (err: any) {
@@ -286,11 +272,29 @@ export default function UploadProject() {
         // const inputArray = inputValue.split(',').map((item) => item.trim());
     }
 
+    const sendForPlagarism = async() =>{
+        try{
+            console.log(project)
+            data.title =project.title;
+            data.shortdescription = project.shortdiscription;
+            data.description = project.description
+            console.log(data);
+            const res = await axios.post('https://procollab-plagiarism.onrender.com/get',data);
+            const firstObject = res.data[0];
+            const per = firstObject.percentage;
+            console.log(per)
+            setPercentage(per);
+            console.log(percentage)
+        }catch(err:any){
+            console.log('Error while checking for plagarism')
+        }
+    }
+
     return (
         <div className='flex justify-center'>
 
 
-            <form className='border p-7 w-full md:w-3/5 shadow'>
+            <div className='border p-7 w-full md:w-3/5 shadow'>
 
                 <div className="space-y-12 mt-20">
                     <div className="border-b-2 border-black pb-12">
@@ -832,12 +836,43 @@ export default function UploadProject() {
                 </div>
 
                 <div className="mt-4  flex justify-center items-center  gap-x-6 mb-5">
-                    <button
-                        type="submit" onClick={(e) => SendDetails(e)}
-                        className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+
+                <Dialog.Root>
+
+
+                    <Dialog.Trigger onClick={()=>sendForPlagarism()}
+                    className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
                        Public Project
-                    </button>
+                    </Dialog.Trigger> 
+                   <Dialog.Portal>
+                    <Dialog.Overlay className='fixed inset-0 bg-black/50'/>
+                        <Dialog.Content className='fixed top-[30%] left-2 md:top-[30%] md:left-[40%] bg-white flex flex-col justify-between text-gray-900 shadow rounded-md p-8 w-[400px] h-[300px]'>
+                             <div className='flex justify-between items-center gap-5'>
+                                <h2 className='text-xl'>Upload Project</h2>
+                                <Dialog.DialogClose>
+                                    <button><X/></button>
+                                </Dialog.DialogClose>
+                             </div>
+                            <div>
+                                <Progress className='bg-black/50' value={percentage} /> 
+                            </div>
+                            <div className=' flex justify-center p-2'>
+                            <p className='text-xl bg-green-500 rounded-full p-4'>{percentage}%</p>
+                            </div>
+                            <div>
+                            {   
+                                (percentage>60)?( 
+                                <Button className='bg-green-500  hover:bg-green-600 p-4'>Send For Review</Button>  
+                                ):<Button className='bg-green-500 p-4  hover:bg-green-600' onClick={(e)=>SendDetails(e)}>Upload</Button> 
+                            }
+                            </div>
+
+                        </Dialog.Content>
+                   </Dialog.Portal>
+                </Dialog.Root>
+
+
                 </div>
                 <div className='pb-12 text-center'>
                     {!formValid && (
@@ -846,7 +881,9 @@ export default function UploadProject() {
                         </div>
                     )}
                 </div>
-            </form>
+            </div>
         </div>
     )
 }
+
+// onClick={(e) => SendDetails(e)}
