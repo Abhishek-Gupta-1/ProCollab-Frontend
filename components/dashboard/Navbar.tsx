@@ -48,14 +48,21 @@ export default function Navbar() {
                                     Search Project
                                 </Link>
                             </li>
-                            {
+                            {/* {
                                 userId &&
                                 <li>
                                     <Link className="hover:text-gray-200 cursor-pointer" href="/uploadproject">
                                         Upload Project
                                     </Link>
                                 </li>
-                            }
+                            } */}
+                         
+                                <li>
+                                    <Link className="hover:text-gray-200 cursor-pointer" href="/uploadproject">
+                                        Upload Project
+                                    </Link>
+                                </li>
+                            
 
                             {
                                 adminId &&
