@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import { toast } from 'react-hot-toast'
 import { redirect, useRouter } from 'next/navigation';
 
-import { SignInRequest } from '@/api/apis'
+import { AdminSignInRequest, SignInRequest } from '@/api/apis'
 
 
 const defaultValue = {
@@ -29,14 +29,15 @@ export default function Signin() {
 
     const SendDetails = async () => {
         try {
-            const res = await SignInRequest(user);
+            const res = await AdminSignInRequest(user);
 
             // console.log(res?.data.message._id);
 
             // setUserid(res?.data.message._id);
 
-            // console.log(userId);
-            Cookies.set('userid', res?.data.message._id);
+            console.log(res);
+            Cookies.set('adminid', res?.data.message._id);
+            Cookies.set('collageid', res?.data.message.collageId);
             toast.success("Successfully logged In");
 
         } catch (error) {
