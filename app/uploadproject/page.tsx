@@ -181,7 +181,6 @@ export default function UploadProject() {
             setEmailError("");
         }
 
-
         // Institution Validation
 
         if (project.institutionname.trim() === "--Other--" && project.universityname.trim() === "") {
@@ -371,7 +370,7 @@ export default function UploadProject() {
                                 </div>
                             </div>
 
-                            {/* ----------------------------------------------------------------- */}
+                            {/* -------------------------------Category---------------------------------- */}
                             <div className="sm:col-span-3">
                                 <label
                                     htmlFor="category"
