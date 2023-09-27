@@ -42,31 +42,61 @@ const Page = () => {
                         <input type="text" className="w-full p-2 bg-transparent focus:border-none focus:outline-none placeholder:text-white" placeholder="Search" />
                     </div>
                 </div>
-                {/* ----------------Select Instituion---------------------- */}
 
-                <div className="sm:col-span-3">
-                    <label htmlFor="country" className="block text-sm font-semibold leading-6 text-gray-900">
-                        Select Institution
-                    </label>
-                    <div className="mt-2">
-                        <select
-                            id="country"
-                            name="country"
-                            autoComplete="country-name"
-                            className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                        >
 
-                            {
-                                Institution.map((count: string, i: number) => (
-                                    <option key={i}>{count}</option>
-                                ))
-                            }
+                <div className=" justify-center">
+                    <div className=" lg:pl-14 lg:ml-16 ml-10 sm:justify-center lg:inline lg:space-x-40 sm:space-y-6 ">
 
-                        </select>
+
+                        {/* ----------------Select Instituion---------------------- */}
+
+                        <div className="sm:col-span-3 text-left lg:inline-block sm:block pr-14 ">
+                            <label htmlFor="Institution" className="text-sm font-semibold leading-6 text-white">
+                                Select Institution
+                            </label>
+                            <div className="mt-2">
+                                <select
+                                    id="Institution"
+                                    name="Institution"
+                                    autoComplete="Institution-name"
+                                    className=" w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                                >
+
+                                    {
+                                        Institution.map((count: string, i: number) => (
+                                            <option key={i}>{count}</option>
+                                        ))
+                                    }
+
+                                </select>
+                            </div>
+                        </div>
+                        {/* ----------------------Category---------------------------------------- */}
+
+                        <div className="sm:col-span-3 sm:justify-center lg:inline-block sm:block lg:justify-right mr-14">
+                            <label
+                                htmlFor="category"
+                                className="text-sm font-semibold leading-6 text-white"
+                            >
+                                Category
+                            </label>
+                            <div className="mt-2 justify-center">
+                                <select
+                                    id="Category"
+                                    name="category"
+                                    autoComplete="category-name"
+                                    className="text-left w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                                >
+                                    <option>--Select--</option>
+                                    <option>All</option>
+                                    <option>Software</option>
+                                    <option>Hardware</option>
+                                    <option>Hybrid(Software+Hardware)</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-
                 {/* projects  */}
                 <div className=" flex flex-wrap flex-col md:flex-row justify-between  items-center">
 
