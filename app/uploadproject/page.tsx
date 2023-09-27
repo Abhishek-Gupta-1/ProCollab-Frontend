@@ -5,6 +5,10 @@ import { Countries } from '../../constents'
 import { uploadProjects } from '@/api/apis';
 import Cookies from 'js-cookie';
 import toast from 'react-hot-toast';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
+
+
 
 type PorjectDetails = {
     title: string;
@@ -44,12 +48,18 @@ const initialProjectDetails: PorjectDetails = {
 };
 
 
+const data = {
+    title:'',
+    shortdescription:'',
+    description:''
+}
 
 
 export default function UploadProject() {
 
     const [project, setProject] = useState(initialProjectDetails);
     const [projectId, setProjectId] = useState('');
+    const router = useRouter();
 
     // For Form Validation_____________________________
 
@@ -226,12 +236,30 @@ export default function UploadProject() {
                 project.userid = userId
             }
             console.log(project)
+            data.title =project.title;
+            data.shortdescription = project.shortdiscription;
+            data.description = project.description
 
-            const res = await uploadProjects(project);
-            console.log(res);
+            console.log(data)
 
-            toast.success("Project Uploaded");
+            // const res = await uploadProjects(project);
+            const res = await axios.post('https://procollab-plagiarism.onrender.com/get',data);
 
+            if(!res.data){
+                 toast('Loading')
+            }else{
+                const firstObject = res.data[0];
+                console.log(res);
+                const message = firstObject.status;
+                const percentage = firstObject.percentage;
+                console.log(message)   
+                Cookies.set('status',message);
+                Cookies.set('percentage',percentage);
+           
+                router.push('/plagarism')
+            }
+            console.log(res.data);
+           
 
         } catch (err: any) {
             console.log("Error in uploading Project")
@@ -757,9 +785,9 @@ export default function UploadProject() {
                 <div className="mt-4  flex justify-center items-center  gap-x-6 mb-5">
                     <button
                         type="submit" onClick={(e) => SendDetails(e)}
-                        className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
-                        Publish My Project / Research
+                       Public Project
                     </button>
                 </div>
                 <div className='pb-12 text-center'>

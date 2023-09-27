@@ -1,9 +1,11 @@
 import Navbar from '@/components/dashboard/Navbar'
+
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
 import {ToasterProvider} from '@/components/ToastProvider'
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,6 +25,7 @@ export default function RootLayout({
         <ToasterProvider/>
         <Navbar />
         {children}
+        <Toaster/>
         </body>
     </html>
   )
