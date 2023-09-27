@@ -54,9 +54,9 @@ const initialProjectDetails: PorjectDetails = {
 
 
 const data = {
-    title:'',
-    shortdescription:'',
-    description:''
+    title: '',
+    shortdescription: '',
+    description: ''
 }
 
 
@@ -253,30 +253,30 @@ export default function UploadProject() {
                 project.userid = userId
             }
             console.log(project)
-            data.title =project.title;
+            data.title = project.title;
             data.shortdescription = project.shortdiscription;
             data.description = project.description
 
             console.log(data)
 
             // const res = await uploadProjects(project);
-            const res = await axios.post('https://procollab-plagiarism.onrender.com/get',data);
+            const res = await axios.post('https://procollab-plagiarism.onrender.com/get', data);
 
-            if(!res.data){
-                 toast('Loading')
-            }else{
+            if (!res.data) {
+                toast('Loading')
+            } else {
                 const firstObject = res.data[0];
                 console.log(res);
                 const message = firstObject.status;
                 const percentage = firstObject.percentage;
-                console.log(message)   
-                Cookies.set('status',message);
-                Cookies.set('percentage',percentage);
-           
+                console.log(message)
+                Cookies.set('status', message);
+                Cookies.set('percentage', percentage);
+
                 router.push('/plagarism')
             }
             console.log(res.data);
-           
+
 
         } catch (err: any) {
             console.log("Error in uploading Project")
@@ -287,7 +287,7 @@ export default function UploadProject() {
     }
 
     return (
-        <div className='flex justify-center'>
+        <div className='flex bg-white justify-center'>
 
 
             <form className='border p-7 w-full md:w-3/5 shadow'>
@@ -836,7 +836,7 @@ export default function UploadProject() {
                         type="submit" onClick={(e) => SendDetails(e)}
                         className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
-                       Public Project
+                        Public Project
                     </button>
                 </div>
                 <div className='pb-12 text-center'>
