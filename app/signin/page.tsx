@@ -1,19 +1,16 @@
 "use client"
-
+import { useState } from 'react';
 import Link from 'next/link'
 import React from 'react'
 import Cookies from 'js-cookie';
 import { toast } from 'react-hot-toast'
 import { redirect, useRouter } from 'next/navigation';
-
 import { SignInRequest } from '@/api/apis'
-
 
 const defaultValue = {
     email: '',
     password: '',
 }
-
 
 export default function Signin() {
     const router = useRouter();
@@ -47,18 +44,8 @@ export default function Signin() {
         }
     }
 
-
     return (
         <>
-            {/*
-          This example requires updating your template:
-  
-          ```
-          <html class="h-full bg-white">
-          <body class="h-full">
-          ```
-        */}
-
             <div className="flex min-h-full flex-1 flex-col justify-center px-6  py-12 lg:px-8">
                 <div className="sm:mx-auto sm:w-full  sm:max-w-sm">
                     {/* <div className=' flex justify-center '>
@@ -93,7 +80,6 @@ export default function Signin() {
                                 <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
                                     Password
                                 </label>
-
                             </div>
                             <div className="mt-2">
                                 <input
@@ -123,7 +109,6 @@ export default function Signin() {
                         </div>
                     </div>
 
-
                     <div className='pb-12 flex justify-center'>
                         <Link href='/signup'>
                             <p className='text-blue-800 mt-6'>{`Don't have a account? create one`}</p>
@@ -142,11 +127,6 @@ export default function Signin() {
                         </Link>
 
                     </div>
-
-
-
-
-
                 </div>
             </div >
         </>
