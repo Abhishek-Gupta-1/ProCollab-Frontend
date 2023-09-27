@@ -1,9 +1,10 @@
 import axios from 'axios'
 
-const URL ='http://localhost:8000';
+const URL ='https://backend69.up.railway.app';
 
 // console.log(URL)
-// console.log(process.env.NEX/T_APP_BACKEND_URL/)
+// const URL = process.env.NEXT_APP_BACKEND_URL
+// console.log(URL)
 
 type User  = {
  fullname:string;
@@ -44,7 +45,6 @@ export const SignUpRequest = async(user:User) =>{
 
 export const SignInRequest = async(user:UserSignIn) =>{
     try{
-      
       return await axios.post(`${URL}/signin`,user);
     }catch(err:any){
         console.log("Error in making Sign in request")
@@ -65,6 +65,7 @@ export const uploadProjects = async(project:PorjectDetails) =>{
 export const getProjectDeatils = async(id:number) =>{
       
     try{
+    
       return await axios.get(`${URL}/getprojectsdetails/${id}`);
     }catch(err:any){
         console.log("Error in getting  projects description")
@@ -80,6 +81,16 @@ export const AdminSignInRequest = async(user:UserSignIn) =>{
   try{
     
     return await axios.post(`${URL}/adminsignin`,user);
+  }catch(err:any){
+      console.log("Error in making Admin Sign in request")
+      return;
+  }
+}
+
+// get all university projects 
+export const getAllUniversityProject = async(id:any) =>{
+  try{
+    return await axios.get(`${URL}/universityprojects/${id}`);
   }catch(err:any){
       console.log("Error in making Sign in request")
       return;

@@ -35,8 +35,9 @@ export default function Signin() {
 
             // setUserid(res?.data.message._id);
 
-            console.log(user);
+            console.log(res);
             Cookies.set('adminid', res?.data.message._id);
+            Cookies.set('collageid', res?.data.message.collageId);
             toast.success("Successfully logged In");
 
         } catch (error) {

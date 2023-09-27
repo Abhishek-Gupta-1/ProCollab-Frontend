@@ -1,5 +1,29 @@
+"use client"
+
+import { getAllUniversityProject } from "@/api/apis";
+import { useEffect, useState } from "react"
+import Cookies from 'js-cookie'
+
+
 
 const Page = () => {
+   const id =   Cookies.get('collageid');
+  const [projects, setProjects] = useState([])
+
+  useEffect(() => {
+    getProjects();
+  }, []);
+
+  const getProjects = async() =>{
+    try{
+      const res = await getAllUniversityProject(id);
+      console.log(res);
+
+    }catch(err){
+       console.log("error in getting the university Projects");
+    }
+  }
+  
   return (
     <div className="bg-black h-screen flex justify-center items-center">
           <div className=" md:w-3/5 h-full flex justify-center  w-full ">
@@ -22,7 +46,6 @@ const Page = () => {
                       <button>Approve</button>
                       <button>Reject</button>
                     </div>
-              
                    
                  </div>
           </div>
