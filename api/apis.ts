@@ -71,3 +71,17 @@ export const getProjectDeatils = async(id:number) =>{
         return;
     }
 }
+
+
+
+// admin sign in
+
+export const AdminSignInRequest = async(user:UserSignIn) =>{
+  try{
+    
+    return await axios.post(`${URL}/adminsignin`,user);
+  }catch(err:any){
+      console.log("Error in making Sign in request")
+      return;
+  }
+}
