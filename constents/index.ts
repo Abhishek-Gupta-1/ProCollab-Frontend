@@ -90,7 +90,7 @@ export const Demoprojects =[
 
 
 export const Institution = [
-    "Select",
+    "--Select--",
     "Maharshi Dayanand University",
     "University Institute Of Engineering and Technology",
     "Indian Institute of Technology, Delhi",
@@ -150,5 +150,6 @@ export const Institution = [
     "KEONJHAR SCHOOL OF ENGINEERING, KEONJHAR",
     "SRI SARADA COLLEGE OF PHARMACY",
     "BIRBHUM INSTITUTE OF ENGINEERING & TECHNOLOGY",
+    "--Other--",
     
     ]
