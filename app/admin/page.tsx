@@ -53,7 +53,7 @@ export default function Signin() {
         <>
 
 
-            <div className="flex min-h-full flex-1 flex-col justify-center px-6  py-12 lg:px-8">
+            <div className="bg-white flex min-h-full flex-1 flex-col justify-center px-6  py-12 lg:px-8">
                 <div className="sm:mx-auto sm:w-full  sm:max-w-sm">
                     {/* <div className=' flex justify-center '>
                         <Image src="/logo.jpg" alt="logo" width={150} height={100} />

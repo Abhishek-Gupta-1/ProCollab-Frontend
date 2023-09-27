@@ -59,9 +59,9 @@ const initialProjectDetails: PorjectDetails = {
 
 
 const data = {
-    title:'',
-    shortdescription:'',
-    description:''
+    title: '',
+    shortdescription: '',
+    description: ''
 }
 
 
@@ -291,7 +291,7 @@ export default function UploadProject() {
     }
 
     return (
-        <div className='flex justify-center'>
+        <div className='flex bg-white justify-center'>
 
 
             <div className='border p-7 w-full md:w-3/5 shadow'>
