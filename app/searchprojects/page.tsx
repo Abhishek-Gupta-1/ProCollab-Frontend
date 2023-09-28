@@ -133,7 +133,7 @@ const Page = () => {
                 </div>
 
                 {/* projects  */}
-                <div className=" border flex flex-wrap border-white">
+                <div className=" flex flex-wrap gap-5 justify-center   border-white">
 
                         {
                             projects.map((project: any, i: number) => (
