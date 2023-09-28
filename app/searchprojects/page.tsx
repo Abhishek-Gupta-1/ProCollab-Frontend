@@ -9,7 +9,7 @@ import { Demoprojects } from "@/constents"
 import { Institution } from "@/constents";
 
 const Page = () => {
-
+    const [search, setSearch] = useState('')
     const [projects, setProjects] = useState<any>([]);
 
     const productId = 'sdnfsvfd';

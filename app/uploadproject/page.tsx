@@ -698,8 +698,8 @@ export default function UploadProject() {
                                 </label>
                                 <div className="mt-2">
                                     <select
-                                        id="institutionname"
-                                        name="institutionname"
+                                        id="universityname"
+                                        name="universityname"
                                         onChange={(e) => InputfromSelect(e)}
                                         autoComplete=" "
                                         className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
@@ -719,7 +719,7 @@ export default function UploadProject() {
                             </div>
 
                             {/* ---------------Others------------------------ */}
-                            <div className="mt-6 ">
+                            {/* <div className="mt-6 ">
                                 <label htmlFor="Institution" className="block text-sm font-semibold leading-6 text-gray-900">
                                     Other
                                     <p className="text-xs pb-4 text-gray-600" >Write Institution Name here if not Mention Above</p>
@@ -739,7 +739,7 @@ export default function UploadProject() {
                                 <div className="text-red-500">
                                     {universitynameError && <p>{universitynameError}</p>}
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
 
 
