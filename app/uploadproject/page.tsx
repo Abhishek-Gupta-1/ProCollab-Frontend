@@ -262,8 +262,8 @@ export default function UploadProject() {
 
             const res = await uploadProjects(project);
             console.log(res);
-            if(res?.data){
-                toast('project uploaded Succesfully')
+            if(res){
+                toast.success('project uploaded Succesfully')
             }
            
 
