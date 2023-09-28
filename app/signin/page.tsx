@@ -28,7 +28,7 @@ export default function Signin() {
         try {
             const res = await SignInRequest(user);
 
-            // console.log(res?.data.message._id);
+            console.log(res?.status);
 
             // setUserid(res?.data.message._id);
 
