@@ -13,7 +13,10 @@ const Page = () => {
     const [projects, setProjects] = useState<any>([]);
 
     const productId = 'sdnfsvfd';
-
+    
+    // const handleInputChange = async() =>{
+    //     setSearch({...search,})
+    // }
     // useEffect(() => {
     //     getAllProjects();
     // }, [])
@@ -39,7 +42,9 @@ const Page = () => {
                 <div className="flex justify-center p-4 text-white">
                     <div className="border w-full md:w-4/5 flex rounded-[20px]  shadow">
                         <Search className="mt-2 pl-2" />
-                        <input type="text" className="w-full p-2 bg-transparent focus:border-none focus:outline-none placeholder:text-white" placeholder="Search" />
+                        <input type="text" className="w-full p-2 bg-transparent focus:border-none focus:outline-none placeholder:text-white" placeholder="Search"
+                         onChange={handleInputChange}
+                        />
                     </div>
                 </div>
 
