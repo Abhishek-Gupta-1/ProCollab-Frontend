@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const URL ='https://backend69.up.railway.app';
+const URL ='https://procollabbackend.onrender.com';
 
 // console.log(URL)
 // const URL ='http://localhost:8000'
