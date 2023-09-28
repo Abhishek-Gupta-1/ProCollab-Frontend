@@ -3,7 +3,7 @@ import axios from 'axios'
 const URL ='https://backend69.up.railway.app';
 
 // console.log(URL)
-// const URL = process.env.NEXT_APP_BACKEND_URL
+// const URL ='http://localhost:8000'
 // console.log(URL)
 
 type User  = {

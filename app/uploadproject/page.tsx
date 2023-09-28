@@ -280,6 +280,7 @@ export default function UploadProject() {
             data.description = project.description
             console.log(data);
             const res = await axios.post('https://procollab-plagiarism.onrender.com/get',data);
+             console.log(res);
             const firstObject = res.data[0];
             const per = firstObject.percentage;
             console.log(per)
