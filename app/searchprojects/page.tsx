@@ -8,12 +8,19 @@ import { useState, useEffect } from "react";
 import { Demoprojects } from "@/constents"
 import { Institution } from "@/constents";
 
-const Page = () => {
+const data ={
+  query:''
+}
 
+const Page = () => {
+    const [search, setSearch] = useState('')
     const [projects, setProjects] = useState<any>([]);
 
     const productId = 'sdnfsvfd';
-
+    
+    // const handleInputChange = async() =>{
+    //     setSearch({...search,})
+    // }
     // useEffect(() => {
     //     getAllProjects();
     // }, [])
@@ -30,6 +37,31 @@ const Page = () => {
     //         console.log('Error In Getting the Projects');
     //     }
     // }
+    const searchRequest = async() =>{
+        try{
+            const res = await axios.post('https://procollab-search.onrender.com/search',data);
+            console.log(res);
+    
+        }catch(err:any){
+            console.log('Error in making searching request',err);
+        }
+    }
+      
+
+    
+  const handleKeyPress = (e:any) => {
+    if (e.key === 'Enter') {
+        searchRequest();
+  }
+}
+
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearch(e.target.value);
+        console.log(search); 
+        data.query = search;
+        console.log(data); 
+      }
 
     return (
         <div className="flex justify-center bg-black h-full">
@@ -39,7 +71,10 @@ const Page = () => {
                 <div className="flex justify-center p-4 text-white">
                     <div className="border w-full md:w-4/5 flex rounded-[20px]  shadow">
                         <Search className="mt-2 pl-2" />
-                        <input type="text" className="w-full p-2 bg-transparent focus:border-none focus:outline-none placeholder:text-white" placeholder="Search" />
+                        <input type="text" className="w-full p-2 bg-transparent focus:border-none focus:outline-none placeholder:text-white" placeholder="Search"
+                         onChange={(e)=>handleInputChange(e)}
+                         onKeyPress={handleKeyPress}
+                        />
                     </div>
                 </div>
 
